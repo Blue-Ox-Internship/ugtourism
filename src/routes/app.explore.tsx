@@ -37,6 +37,8 @@ function ExplorePage() {
     : [];
 
   const collectedInRegion = (name: Region) => CARDS.filter(c => c.region === name && c.collected).length;
+  const totalInRegion = (name: Region) => CARDS.filter(c => c.region === name).length;
+  const pctInRegion = (name: Region) => Math.round((collectedInRegion(name) / totalInRegion(name)) * 100);
 
   return (
     <div className="mx-auto max-w-md px-5 pt-6">
@@ -81,6 +83,8 @@ function ExplorePage() {
         <div className="mt-3 space-y-2">
           {REGIONS.map((r) => {
             const owned = collectedInRegion(r.name);
+            const total = totalInRegion(r.name);
+            const pct = pctInRegion(r.name);
             const isActive = selectedRegion === r.name;
             return (
               <button
@@ -90,7 +94,7 @@ function ExplorePage() {
                   isActive ? "border-primary bg-primary/5" : "border-border bg-card"
                 }`}
               >
-                <div className={`grid h-11 w-11 place-items-center rounded-xl ${
+                <div className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${
                   owned > 0 ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"
                 }`}>
                   <Compass className="h-5 w-5" />
@@ -98,9 +102,15 @@ function ExplorePage() {
                 <div className="flex-1 min-w-0">
                   <div className="font-semibold">{r.name} Uganda</div>
                   <div className="truncate text-xs text-muted-foreground">{r.tagline}</div>
+                  <div className="mt-2 flex items-center gap-2">
+                    <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-secondary">
+                      <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
+                    </div>
+                    <span className="text-[10px] font-semibold text-muted-foreground">{owned}/{total}</span>
+                  </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-display text-base font-bold">{r.cards}</div>
+                  <div className="font-display text-base font-bold">{total}</div>
                   <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{owned} owned</div>
                 </div>
               </button>
