@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
-import { Search, Check, Lock, ArrowUpDown } from "lucide-react";
+import { Search, Check, Lock, ArrowUpDown, Star } from "lucide-react";
 import { CARDS, CATEGORY_META, REGIONS, type Category, type Region } from "@/lib/quest-data";
 import { CategoryIcon } from "@/components/quest/category-icon";
 
@@ -55,6 +55,13 @@ function CardsPage() {
 
   const total = CARDS.length;
   const owned = CARDS.filter((c) => c.collected).length;
+
+  function difficultyStars(reward: number) {
+    const count = reward <= 30 ? 1 : reward <= 50 ? 2 : 3;
+    return Array.from({ length: 3 }, (_, i) => (
+      <Star key={i} className={`h-2.5 w-2.5 ${i < count ? "fill-primary text-primary" : "text-muted-foreground/30"}`} />
+    ));
+  }
 
   return (
     <div className="mx-auto max-w-md px-5 pt-6">
@@ -176,10 +183,11 @@ function CardsPage() {
                   </div>
                 )}
               </div>
-              <div className="p-3">
-                <div className="truncate text-sm font-semibold">{c.title}</div>
-                <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{c.region} · {c.code}</div>
-              </div>
+                  <div className="p-3">
+                    <div className="truncate text-sm font-semibold">{c.title}</div>
+                    <div className="mt-0.5 flex items-center gap-1">{difficultyStars(c.reward)}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{c.region} · {c.code}</div>
+                  </div>
             </Link>
           );
         })}
