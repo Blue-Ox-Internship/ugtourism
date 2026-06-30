@@ -91,6 +91,8 @@ function CardsPage() {
       <div className="-mx-5 mt-4 flex gap-2 overflow-x-auto px-5">
         {CATS.map((c) => {
           const active = cat === c;
+          const catTotal = c === "all" ? CARDS.length : CARDS.filter(cd => cd.category === c).length;
+          const catOwned = c === "all" ? owned : CARDS.filter(cd => cd.category === c && cd.collected).length;
           return (
             <button
               key={c}
@@ -100,7 +102,10 @@ function CardsPage() {
               }`}
             >
               {c !== "all" && <CategoryIcon category={c} className="h-3.5 w-3.5" />}
-              {c === "all" ? "All categories" : CATEGORY_META[c].label}
+              <span>{c === "all" ? "All" : CATEGORY_META[c].label}</span>
+              <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${active ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground"}`}>
+                {catOwned}/{catTotal}
+              </span>
             </button>
           );
         })}
