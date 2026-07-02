@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Bell, ScanLine, Trophy, ArrowUpRight, Flame, Compass } from "lucide-react";
+import { toast } from "sonner";
 import { CARDS, PROFILE, ACHIEVEMENTS, CATEGORY_META } from "@/lib/quest-data";
 import { CategoryIcon } from "@/components/quest/category-icon";
 
@@ -23,7 +24,7 @@ function Passport() {
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Digital Passport</div>
           <div className="font-display text-xl font-bold">Hi, {PROFILE.name.split(" ")[0]} 👋</div>
         </div>
-        <button className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+        <button onClick={() => toast("No new notifications", { description: "You're all caught up!" })} className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
           <Bell className="h-4 w-4" />
         </button>
       </header>

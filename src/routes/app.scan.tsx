@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ScanLine, Zap, ImageIcon, X, Check } from "lucide-react";
+import { toast } from "sonner";
 import { CARDS } from "@/lib/quest-data";
 
 export const Route = createFileRoute("/app/scan")({
@@ -35,7 +36,7 @@ function ScanPage() {
           <X className="h-4 w-4" />
         </button>
         <div className="text-xs font-semibold uppercase tracking-[0.2em] opacity-70">Scan QR</div>
-        <button className="grid h-10 w-10 place-items-center rounded-full bg-background/15 backdrop-blur">
+        <button onClick={() => toast("Flashlight toggled (simulated)")} className="grid h-10 w-10 place-items-center rounded-full bg-background/15 backdrop-blur">
           <Zap className="h-4 w-4" />
         </button>
       </header>
@@ -62,7 +63,7 @@ function ScanPage() {
       </div>
 
       <div className="relative mt-10 px-6">
-        <button className="flex w-full items-center justify-center gap-2 rounded-full border border-background/25 py-3 text-sm font-semibold backdrop-blur">
+        <button onClick={() => toast("Gallery upload coming soon")} className="flex w-full items-center justify-center gap-2 rounded-full border border-background/25 py-3 text-sm font-semibold backdrop-blur">
           <ImageIcon className="h-4 w-4" /> Upload from gallery
         </button>
       </div>

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Bell, ChevronRight, Globe, HelpCircle, LogOut, Settings, Share2, Trophy, User } from "lucide-react";
+import { toast } from "sonner";
 import { PROFILE, CARDS } from "@/lib/quest-data";
 
 export const Route = createFileRoute("/app/profile")({
@@ -44,17 +45,17 @@ function ProfilePage() {
             </div>
           ))}
         </div>
-        <button className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3 text-sm font-semibold text-primary-foreground">
+        <button onClick={() => toast("Share link copied to clipboard!")} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3 text-sm font-semibold text-primary-foreground">
           <Share2 className="h-4 w-4" /> Share my passport
         </button>
       </section>
 
       <section className="mt-6 space-y-2">
         <Row icon={Trophy} label="Achievements" to="/app/achievements" />
-        <Row icon={User} label="Edit profile" />
-        <Row icon={Bell} label="Notifications" />
+        <Row icon={User} label="Edit profile" onClick={() => toast("Edit profile coming soon")} />
+        <Row icon={Bell} label="Notifications" onClick={() => toast("No new notifications", { description: "You're all caught up!" })} />
         <Row icon={Globe} label="Language" hint="English" />
-        <Row icon={HelpCircle} label="Help & support" />
+        <Row icon={HelpCircle} label="Help & support" onClick={() => toast("Help center coming soon")} />
       </section>
 
       <Link to="/" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-destructive/40 py-3 text-sm font-semibold text-destructive">
@@ -64,7 +65,7 @@ function ProfilePage() {
   );
 }
 
-function Row({ icon: Icon, label, hint, to }: { icon: typeof Bell; label: string; hint?: string; to?: string }) {
+function Row({ icon: Icon, label, hint, to, onClick }: { icon: typeof Bell; label: string; hint?: string; to?: string; onClick?: () => void }) {
   const inner = (
     <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4">
       <div className="grid h-9 w-9 place-items-center rounded-lg bg-secondary text-foreground">
@@ -76,5 +77,5 @@ function Row({ icon: Icon, label, hint, to }: { icon: typeof Bell; label: string
     </div>
   );
   if (to) return <Link to={to as "/app/achievements"}>{inner}</Link>;
-  return <button className="block w-full text-left">{inner}</button>;
+  return <button onClick={onClick} className="block w-full text-left">{inner}</button>;
 }

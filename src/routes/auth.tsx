@@ -1,6 +1,7 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Hash, ScanLine, X, Zap, Check, Sparkles } from "lucide-react";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -114,7 +115,7 @@ function ScanView({ onCancel }: { onCancel: () => void }) {
           <X className="h-4 w-4" />
         </button>
         <div className="text-xs font-semibold uppercase tracking-[0.2em] opacity-70">Activate card</div>
-        <button className="grid h-10 w-10 place-items-center rounded-full bg-background/15 backdrop-blur">
+        <button onClick={() => toast("Flashlight toggled (simulated)")} className="grid h-10 w-10 place-items-center rounded-full bg-background/15 backdrop-blur">
           <Zap className="h-4 w-4" />
         </button>
       </header>
