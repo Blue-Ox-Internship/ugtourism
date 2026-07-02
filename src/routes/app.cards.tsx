@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { Search, Check, Lock } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Search, Check, Lock, ArrowUpDown } from "lucide-react";
 import { CARDS, CATEGORY_META, type Category } from "@/lib/quest-data";
 import { CategoryIcon } from "@/components/quest/category-icon";
 
@@ -21,19 +21,35 @@ const FILTERS: ({ key: "all" | "collected" | "locked"; label: string }) [] = [
 ];
 
 const CATS: (Category | "all")[] = ["all", "language", "culture", "food", "wildlife", "destination", "experience"];
+type SortKey = "name" | "reward" | "region";
+const SORTS: { key: SortKey; label: string }[] = [
+  { key: "name", label: "Name" },
+  { key: "reward", label: "Reward" },
+  { key: "region", label: "Region" },
+];
 
 function CardsPage() {
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState<"all" | "collected" | "locked">("all");
   const [cat, setCat] = useState<Category | "all">("all");
+  const [sort, setSort] = useState<SortKey>("name");
+  const [sortAsc, setSortAsc] = useState(true);
 
-  const cards = CARDS.filter((c) => {
-    if (filter === "collected" && !c.collected) return false;
-    if (filter === "locked" && c.collected) return false;
-    if (cat !== "all" && c.category !== cat) return false;
-    if (q && !c.title.toLowerCase().includes(q.toLowerCase())) return false;
-    return true;
-  });
+  const cards = useMemo(() => {
+    const filtered = CARDS.filter((c) => {
+      if (filter === "collected" && !c.collected) return false;
+      if (filter === "locked" && c.collected) return false;
+      if (cat !== "all" && c.category !== cat) return false;
+      if (q && !c.title.toLowerCase().includes(q.toLowerCase())) return false;
+      return true;
+    });
+    return filtered.sort((a, b) => {
+      const dir = sortAsc ? 1 : -1;
+      if (sort === "name") return a.title.localeCompare(b.title) * dir;
+      if (sort === "reward") return (a.reward - b.reward) * dir;
+      return a.region.localeCompare(b.region) * dir;
+    });
+  }, [q, filter, cat, sort, sortAsc]);
 
   const total = CARDS.length;
   const owned = CARDS.filter((c) => c.collected).length;
@@ -88,7 +104,31 @@ function CardsPage() {
         })}
       </div>
 
-      <div className="mt-5 grid grid-cols-2 gap-3 pb-4">
+      <div className="mt-4 flex items-center justify-between">
+        <div className="flex gap-2">
+          {SORTS.map((s) => (
+            <button
+              key={s.key}
+              onClick={() => {
+                if (sort === s.key) setSortAsc(!sortAsc);
+                else { setSort(s.key); setSortAsc(true); }
+              }}
+              className={`inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition ${
+                sort === s.key ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/70"
+              }`}
+            >
+              <ArrowUpDown className="h-3 w-3" /> {s.label}
+            </button>
+          ))}
+        </div>
+        {sort && (
+          <button onClick={() => setSortAsc(!sortAsc)} className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+            {sortAsc ? "↑ A-Z" : "↓ Z-A"}
+          </button>
+        )}
+      </div>
+
+      <div className="mt-4 grid grid-cols-2 gap-3 pb-4">
         {cards.map((c) => {
           const meta = CATEGORY_META[c.category];
           return (
