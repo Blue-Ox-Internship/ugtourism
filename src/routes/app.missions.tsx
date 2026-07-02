@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Camera, Check, Star } from "lucide-react";
+import { useRef } from "react";
+import { toast } from "sonner";
+import { Camera, Check, Star, Upload } from "lucide-react";
 import { CARDS, CATEGORY_META } from "@/lib/quest-data";
 import { CategoryIcon } from "@/components/quest/category-icon";
 
@@ -46,35 +48,51 @@ function MissionsPage() {
 
 function MissionRow({ card, done }: { card: typeof CARDS[number]; done?: boolean }) {
   const meta = CATEGORY_META[card.category];
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  function handleProofUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    toast.success("Photo submitted! Mission marked as pending review.");
+  }
+
+  function handleSubmitProof(e: React.MouseEvent) {
+    e.preventDefault();
+    fileRef.current?.click();
+  }
+
   return (
-    <Link to="/app/cards/$id" params={{ id: card.id }} className="block rounded-2xl border border-border bg-card p-4">
-      <div className="flex items-start gap-3">
-        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl text-primary-foreground" style={{ background: meta.color }}>
-          <CategoryIcon category={card.category} className="h-4 w-4" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">{card.code}</span>
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">· {card.region}</span>
+    <>
+      <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleProofUpload} />
+      <Link to="/app/cards/$id" params={{ id: card.id }} className="block rounded-2xl border border-border bg-card p-4">
+        <div className="flex items-start gap-3">
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl text-primary-foreground" style={{ background: meta.color }}>
+            <CategoryIcon category={card.category} className="h-4 w-4" />
           </div>
-          <div className="font-display text-base font-bold">{card.title}</div>
-          <p className="mt-1 text-sm text-foreground/75">{card.mission}</p>
-          <div className="mt-3 flex items-center justify-between">
-            <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-1 text-[11px] font-bold text-primary">
-              <Star className="h-3 w-3 fill-current" /> +{card.reward} EP
-            </span>
-            {done ? (
-              <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary">
-                <Check className="h-3.5 w-3.5" /> Completed
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">{card.code}</span>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">· {card.region}</span>
+            </div>
+            <div className="font-display text-base font-bold">{card.title}</div>
+            <p className="mt-1 text-sm text-foreground/75">{card.mission}</p>
+            <div className="mt-3 flex items-center justify-between">
+              <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-1 text-[11px] font-bold text-primary">
+                <Star className="h-3 w-3 fill-current" /> +{card.reward} EP
               </span>
-            ) : (
-              <span className="inline-flex items-center gap-1 text-xs font-semibold text-foreground">
-                <Camera className="h-3.5 w-3.5" /> Submit proof
-              </span>
-            )}
+              {done ? (
+                <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary">
+                  <Check className="h-3.5 w-3.5" /> Completed
+                </span>
+              ) : (
+                <span onClick={handleSubmitProof} className="inline-flex items-center gap-1 text-xs font-semibold text-foreground">
+                  <Camera className="h-3.5 w-3.5" /> Submit proof
+                </span>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </>
   );
 }

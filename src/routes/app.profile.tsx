@@ -30,7 +30,7 @@ function ProfilePage() {
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Profile</div>
           <h1 className="font-display text-3xl font-bold">You</h1>
         </div>
-        <button className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+        <button onClick={() => toast("Settings page coming soon")} className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
           <Settings className="h-4 w-4" />
         </button>
       </header>

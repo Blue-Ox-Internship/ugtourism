@@ -1,4 +1,5 @@
 import { createFileRoute, Link, useParams, useRouter } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { ArrowLeft, Camera, Check, MapPin, PlayCircle, Share2, Sparkles, Star, Volume2 } from "lucide-react";
 import { CATEGORY_META, getCard } from "@/lib/quest-data";
 import { CategoryIcon } from "@/components/quest/category-icon";
@@ -31,7 +32,7 @@ function CardDetail() {
           <button onClick={() => router.history.back()} className="grid h-10 w-10 place-items-center rounded-full bg-background/80 backdrop-blur">
             <ArrowLeft className="h-4 w-4" />
           </button>
-          <button className="grid h-10 w-10 place-items-center rounded-full bg-background/80 backdrop-blur">
+          <button onClick={() => { navigator.clipboard.writeText(window.location.href); toast.success("Link copied to clipboard!"); }} className="grid h-10 w-10 place-items-center rounded-full bg-background/80 backdrop-blur">
             <Share2 className="h-4 w-4" />
           </button>
         </div>
