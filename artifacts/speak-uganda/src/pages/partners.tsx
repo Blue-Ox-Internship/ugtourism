@@ -7,7 +7,7 @@ import { Link } from "wouter";
 import {
   Hotel, Map, Utensils, Building, BadgeCheck, X, QrCode, Smartphone,
   TrendingUp, Users, Repeat, Heart, ArrowDown, Mail,
-  Plane, Car, Coffee, ShoppingBag, Wifi, ArrowRight
+  Plane, Car, Coffee, ShoppingBag, Wifi, ArrowRight, Star
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -218,7 +218,7 @@ export default function Partners() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-secondary-foreground/80 mb-10 max-w-2xl mx-auto"
           >
-            Turn Every Game Into a New Guest Booking. Speak Uganda puts your hotel, tour, or restaurant directly into thousands of travelers' hands — before they even arrive.
+            Speak Uganda puts your hotel, tour company, or restaurant inside a card game played by Uganda's most engaged travelers — before they even book a flight.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
@@ -322,14 +322,14 @@ export default function Partners() {
                 </div>
                 <div className="p-5 space-y-3">
                   <div>
-                    <h4 className="font-serif font-bold text-lg text-foreground">Gorilla Forest Lodge</h4>
+                    <h4 className="font-serif font-bold text-lg text-foreground">Bwindi Gorilla Lodge</h4>
                     <div className="flex gap-0.5 mt-1">
-                      {[...Array(5)].map((_, i) => (
+                      {[...Array(4)].map((_, i) => (
                         <Star key={i} className="h-3.5 w-3.5 fill-accent text-accent" />
                       ))}
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground">Bwindi Impenetrable Forest · Luxury Stay · Gorilla Trekking Packages</p>
+                  <p className="text-xs text-muted-foreground">Bwindi Impenetrable Forest · Forest Stay · Gorilla Trekking Packages</p>
                   <div className="bg-accent/10 border border-accent/30 rounded-xl p-3 flex items-center gap-3">
                     <div className="w-12 h-12 bg-foreground/10 rounded-lg flex items-center justify-center shrink-0">
                       <QrCode className="h-7 w-7 text-foreground" />
@@ -519,231 +519,95 @@ export default function Partners() {
             viewport={{ once: true }}
             className="bg-card border-2 border-primary/20 rounded-3xl overflow-hidden shadow-lg"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="relative h-64 md:h-auto overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
-                  alt="Partner hotels and places"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/20 md:bg-gradient-to-l" />
-                <div className="absolute bottom-4 left-4 flex gap-2">
-                  {["Hotels", "Tours", "Restaurants", "Attractions"].map((tag) => (
-                    <span key={tag} className="bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="p-10 flex flex-col justify-center gap-6">
-                <div>
-                  <span className="text-primary font-bold uppercase tracking-widest text-xs mb-3 block">Partner Directory</span>
-                  <h3 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
-                    Browse All Partner Hotels, Places & Experiences
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Every business that partners with Speak Uganda gets a full listing — with photos, discounts, booking info, and QR details — in our dedicated Directory. Travelers browse it to plan their trips.
-                  </p>
-                </div>
-                <ul className="space-y-2">
-                  {[
-                    "Hotels & lodges with rooms, photos, and star ratings",
-                    "Tour operators with safari and activity packages",
-                    "Restaurants with menus and exclusive game-card discounts",
-                    "Attractions with opening hours and booking links",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <BadgeCheck className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-6" data-testid="btn-view-directory">
-                    <Link href="/directory">
-                      View the Directory <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5 h-12 px-6" data-testid="btn-join-directory">
-                    <a href="#apply">Get Your Business Listed</a>
-                  </Button>
-                </div>
-              </div>
+            <div className="p-10 text-center border-b border-border bg-muted/50 relative">
+               <div className="flex flex-col md:flex-row items-center justify-center gap-6 relative z-10">
+                 <h3 className="text-2xl font-serif font-bold">Already Featuring</h3>
+                 <div className="h-px bg-border w-full md:w-px md:h-8 my-4 md:my-0"></div>
+                 <h3 className="text-2xl font-serif font-bold text-primary">Next: Your Business</h3>
+               </div>
+            </div>
+            <div className="bg-primary/5 p-12 text-center">
+              <p className="text-xl text-foreground font-medium mb-8 max-w-2xl mx-auto">
+                Join 12+ leading hotels, tour operators, and restaurants already listed in the official Speak Uganda directory.
+              </p>
+              <Button asChild size="lg" className="h-14 px-8 text-lg">
+                <Link href="/discover">View Partner Directory</Link>
+              </Button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── WHO CAN JOIN ─────────────────────────────────────── */}
-      <section className="py-20 bg-muted px-4 md:px-6">
+      {/* ── PARTNERSHIP TIERS ────────────────────────────────── */}
+      <section id="tiers" className="py-24 bg-muted px-4 md:px-6">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-14">
-            <h2 className="text-primary font-bold uppercase tracking-wider text-sm mb-3">Open to All Tourism Businesses</h2>
-            <h3 className="font-serif text-3xl md:text-4xl font-bold text-foreground">Partnership Opportunities</h3>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {partnerTypes.map((type, idx) => (
-              <motion.div
-                key={idx}
-                custom={idx}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-card border border-border rounded-2xl p-5 flex flex-col items-center text-center gap-3 hover:border-primary/50 transition-colors duration-200"
-              >
-                <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center">
-                  <type.icon className="h-6 w-6" />
-                </div>
-                <h4 className="text-sm font-bold leading-tight">{type.title}</h4>
-                <p className="text-xs text-muted-foreground">{type.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── TIER COMPARISON TABLE ────────────────────────────── */}
-      <section id="tiers" className="py-24 bg-background px-4 md:px-6">
-        <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
-            <h2 className="text-primary font-bold uppercase tracking-wider text-sm mb-3">Sponsorship Tiers</h2>
-            <h3 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">Choose Your Partnership Level</h3>
-            <p className="text-muted-foreground max-w-xl mx-auto">Every tier puts your brand in front of Uganda's most engaged travelers. The higher the tier, the deeper the integration.</p>
+            <h2 className="text-primary font-bold uppercase tracking-wider text-sm mb-3">Pricing & Packages</h2>
+            <h3 className="font-serif text-3xl md:text-5xl font-bold text-foreground">Choose Your Partnership Tier</h3>
           </div>
 
-          {/* Mobile: stacked cards */}
-          <div className="grid grid-cols-1 md:hidden gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {tiers.map((tier, idx) => (
-              <div key={idx} className={`border-2 ${tier.color} rounded-2xl p-6 bg-card relative`}>
+              <div 
+                key={idx} 
+                className={`bg-card rounded-3xl overflow-hidden border-2 ${tier.color} shadow-lg relative flex flex-col`}
+              >
                 {tier.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+                  <div className="absolute top-0 inset-x-0 bg-primary text-primary-foreground text-center text-xs font-bold uppercase tracking-widest py-1.5">
                     Most Popular
-                  </span>
+                  </div>
                 )}
-                <h4 className="font-serif text-2xl font-bold mb-1">{tier.label}</h4>
-                <div className="text-3xl font-bold text-primary mb-1">{tier.price} <span className="text-sm font-normal text-muted-foreground">{tier.period}</span></div>
-                <p className="text-muted-foreground text-sm mb-6">{tier.desc}</p>
-                <ul className="space-y-2">
-                  {allFeatures.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-sm">
-                      {tier.features[feature as keyof typeof tier.features] ? (
-                        <BadgeCheck className="h-4 w-4 text-accent shrink-0" />
-                      ) : (
-                        <X className="h-4 w-4 text-muted-foreground/40 shrink-0" />
-                      )}
-                      <span className={tier.features[feature as keyof typeof tier.features] ? "text-foreground" : "text-muted-foreground/50 line-through"}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <Button asChild className="w-full mt-6 bg-primary text-primary-foreground hover:bg-primary/90" data-testid={`btn-tier-${tier.name.toLowerCase()}`}>
-                  <a href="#apply">Get Started</a>
-                </Button>
+                <div className={`p-8 ${tier.popular ? 'pt-10' : ''} border-b border-border text-center`}>
+                  <div className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 text-white ${tier.badge}`}>
+                    {tier.name}
+                  </div>
+                  <div className="flex items-end justify-center gap-1 mb-4">
+                    <span className="text-4xl font-bold text-foreground">{tier.price}</span>
+                    <span className="text-muted-foreground font-medium mb-1">{tier.period}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{tier.desc}</p>
+                </div>
+                <div className="p-8 flex-1 bg-card">
+                  <ul className="space-y-4">
+                    {allFeatures.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-center gap-3 text-sm">
+                        {tier.features[feature as keyof typeof tier.features] ? (
+                          <BadgeCheck className="h-5 w-5 text-primary shrink-0" />
+                        ) : (
+                          <X className="h-5 w-5 text-muted-foreground/30 shrink-0" />
+                        )}
+                        <span className={tier.features[feature as keyof typeof tier.features] ? "text-foreground font-medium" : "text-muted-foreground line-through decoration-muted-foreground/30"}>
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-8 pt-0 mt-auto bg-card">
+                  <Button 
+                    className="w-full h-12" 
+                    variant={tier.popular ? "default" : "outline"}
+                    asChild
+                  >
+                    <a href="#apply">Select {tier.name}</a>
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
-
-          {/* Desktop: comparison table */}
-          <div className="hidden md:block overflow-hidden rounded-2xl border border-border shadow-sm">
-            <table className="w-full">
-              <thead>
-                <tr>
-                  <th className="bg-muted p-5 text-left text-sm font-semibold text-muted-foreground w-1/2">Feature</th>
-                  {tiers.map((tier) => (
-                    <th key={tier.name} className={`bg-muted p-5 text-center relative ${tier.popular ? 'bg-primary/5' : ''}`}>
-                      {tier.popular && (
-                        <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-primary-foreground text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider">
-                          Popular
-                        </span>
-                      )}
-                      <div className="font-serif font-bold text-lg text-foreground">{tier.label}</div>
-                      <div className="text-primary font-bold text-xl mt-1">{tier.price} <span className="text-xs font-normal text-muted-foreground">{tier.period}</span></div>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {allFeatures.map((feature, fIdx) => (
-                  <tr key={feature} className={fIdx % 2 === 0 ? "bg-background" : "bg-muted/30"}>
-                    <td className="p-4 text-sm font-medium text-foreground pl-6">{feature}</td>
-                    {tiers.map((tier) => (
-                      <td key={tier.name} className={`p-4 text-center ${tier.popular ? 'bg-primary/5' : ''}`}>
-                        {tier.features[feature as keyof typeof tier.features] ? (
-                          <BadgeCheck className="h-5 w-5 text-accent mx-auto" />
-                        ) : (
-                          <X className="h-4 w-4 text-muted-foreground/30 mx-auto" />
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-                <tr className="bg-muted/30">
-                  <td className="p-4 pl-6" />
-                  {tiers.map((tier) => (
-                    <td key={tier.name} className={`p-4 text-center ${tier.popular ? 'bg-primary/5' : ''}`}>
-                      <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90" data-testid={`btn-table-tier-${tier.name.toLowerCase()}`}>
-                        <a href="#apply">Get Started</a>
-                      </Button>
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </section>
 
-      {/* ── SOCIAL PROOF ─────────────────────────────────────── */}
-      <section className="py-16 bg-secondary text-secondary-foreground px-4 md:px-6">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="font-serif text-3xl font-bold text-white mb-6">Already Featuring</h3>
-              <ul className="space-y-3">
-                {[
-                  "Uganda Destinations & National Parks",
-                  "Wildlife & Gorilla Trekking Experiences",
-                  "Traditional Foods & Cultural Attractions",
-                  "Jinja White-Water Rafting Adventures",
-                  "Kampala City Culture & Entertainment"
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-secondary-foreground/80">
-                    <BadgeCheck className="h-5 w-5 text-accent shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-serif text-3xl font-bold text-white mb-6">Next: Your Business</h3>
-              <p className="text-secondary-foreground/70 mb-6">
-                We're actively onboarding hotels, tour operators, restaurants, and attractions to be featured in the next edition. Partner slots are limited per category.
-              </p>
-              <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 h-12 px-6" data-testid="btn-social-proof-apply">
-                <a href="#apply">Apply Before Slots Fill</a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── PARTNER APPLICATION FORM ─────────────────────────── */}
-      <section className="py-24 bg-background px-4 md:px-6" id="apply">
+      {/* ── APPLICATION FORM ─────────────────────────────────── */}
+      <section id="apply" className="py-24 bg-background px-4 md:px-6">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-12">
-            <h2 className="text-primary font-bold uppercase tracking-wider text-sm mb-3">Ready to Join?</h2>
-            <h3 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Let's Put Your Business in Every Traveler's Journey
-            </h3>
-            <p className="text-muted-foreground text-lg">
-              Whether you're a hotel, tour operator, restaurant, or attraction — Speak Uganda helps travelers discover, remember, and book your experience. Fill in the form and our team will be in touch within 24 hours.
-            </p>
+            <h2 className="text-primary font-bold uppercase tracking-wider text-sm mb-3">Apply Now</h2>
+            <h3 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">Become a Partner</h3>
+            <p className="text-muted-foreground">Fill out the form below and our team will get back to you within 24 hours.</p>
           </div>
 
-          <div className="bg-card p-8 rounded-2xl border border-border shadow-sm">
+          <div className="bg-card border border-border rounded-3xl p-8 md:p-10 shadow-sm">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -754,7 +618,7 @@ export default function Partners() {
                       <FormItem>
                         <FormLabel>Business Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Acme Safari Lodge" {...field} data-testid="input-business-name" />
+                          <Input placeholder="e.g. Gorilla Forest Lodge" {...field} className="bg-muted" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -768,18 +632,15 @@ export default function Partners() {
                         <FormLabel>Business Type</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger data-testid="select-business-type">
-                              <SelectValue placeholder="Select type..." />
+                            <SelectTrigger className="bg-muted">
+                              <SelectValue placeholder="Select type" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="hotel">Hotel / Lodge / Resort</SelectItem>
-                            <SelectItem value="tour_operator">Tour Operator</SelectItem>
+                            <SelectItem value="hotel">Hotel / Lodge</SelectItem>
+                            <SelectItem value="tour">Tour Operator</SelectItem>
                             <SelectItem value="restaurant">Restaurant / Cafe</SelectItem>
                             <SelectItem value="attraction">Museum / Attraction</SelectItem>
-                            <SelectItem value="airline">Airline / Transport</SelectItem>
-                            <SelectItem value="souvenir">Souvenir / Retail Shop</SelectItem>
-                            <SelectItem value="telecom">Telecom / Tech Company</SelectItem>
                             <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
@@ -797,7 +658,7 @@ export default function Partners() {
                       <FormItem>
                         <FormLabel>Email Address</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="hello@yourbusiness.com" {...field} data-testid="input-email" />
+                          <Input placeholder="contact@business.com" {...field} className="bg-muted" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -810,7 +671,7 @@ export default function Partners() {
                       <FormItem>
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
-                          <Input placeholder="+256 700 000 000" {...field} data-testid="input-phone" />
+                          <Input placeholder="+256..." {...field} className="bg-muted" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -825,11 +686,10 @@ export default function Partners() {
                     <FormItem>
                       <FormLabel>Tell us about your business</FormLabel>
                       <FormControl>
-                        <Textarea
-                          placeholder="What kind of partnership are you interested in? Which tier? Any questions?"
-                          className="min-h-[130px]"
-                          {...field}
-                          data-testid="input-message"
+                        <Textarea 
+                          placeholder="Where are you located? What is your main offering? Which tier are you interested in?" 
+                          className="min-h-[120px] bg-muted" 
+                          {...field} 
                         />
                       </FormControl>
                       <FormMessage />
@@ -837,15 +697,9 @@ export default function Partners() {
                   )}
                 />
 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button type="submit" size="lg" className="flex-1 text-lg h-14 bg-primary text-primary-foreground hover:bg-primary/90" data-testid="btn-submit-partner">
-                    Schedule a Partnership Call
-                  </Button>
-                  <Button type="button" size="lg" variant="outline" className="flex-1 text-lg h-14 border-primary text-primary hover:bg-primary/5" data-testid="btn-download-brochure">
-                    <Mail className="h-5 w-5 mr-2" />
-                    Download Brochure
-                  </Button>
-                </div>
+                <Button type="submit" size="lg" className="w-full h-14 text-lg">
+                  Submit Application
+                </Button>
               </form>
             </Form>
           </div>

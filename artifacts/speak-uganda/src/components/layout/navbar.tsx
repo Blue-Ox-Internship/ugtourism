@@ -10,7 +10,7 @@ export function Navbar() {
   const links = [
     { href: "/", label: "Home" },
     { href: "/explore", label: "Explore" },
-    { href: "/directory", label: "Directory" },
+    { href: "/discover", label: "Discover Uganda" },
     { href: "/shop", label: "Shop" },
     { href: "/partners", label: "Partners" },
     { href: "/about", label: "About" },
@@ -27,19 +27,25 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <Link 
-              key={link.href} 
-              href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                location === link.href ? "text-primary" : "text-muted-foreground"
-              }`}
-              data-testid={`nav-link-${link.label.toLowerCase()}`}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav className="hidden md:flex items-center gap-8 h-full">
+          {links.map((link) => {
+            const isActive = location === link.href;
+            return (
+              <Link 
+                key={link.href} 
+                href={link.href}
+                className={`text-[13px] font-medium transition-colors hover:text-primary relative h-full flex items-center ${
+                  isActive ? "text-primary" : "text-muted-foreground"
+                }`}
+                data-testid={`nav-link-${link.label.toLowerCase()}`}
+              >
+                {link.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary"></span>
+                )}
+              </Link>
+            )
+          })}
           <Button asChild variant="default" className="rounded-full px-6" data-testid="nav-cta">
             <Link href="/shop">Buy the Game</Link>
           </Button>
@@ -64,7 +70,7 @@ export function Navbar() {
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className={`block px-4 py-3 text-lg font-medium rounded-md ${
-                location === link.href ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
+                location === link.href ? "bg-primary/10 text-primary border-l-2 border-primary" : "text-foreground hover:bg-muted"
               }`}
               data-testid={`nav-mobile-link-${link.label.toLowerCase()}`}
             >

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export default function About() {
   return (
@@ -20,7 +21,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-muted-foreground leading-relaxed"
           >
-            Speak Uganda wasn't born in a boardroom. It was born around a campfire in the heart of Murchison Falls, born out of a realization that traditional tourism marketing was missing something crucial: <span className="text-primary font-semibold">Play.</span>
+            Speak Uganda started as a question: what if the best travel guide to Uganda wasn't a book — but a game you could hold, deal, and play before you ever booked a flight?
           </motion.p>
         </div>
 
@@ -72,20 +73,20 @@ export default function About() {
             <p className="text-lg text-muted-foreground">
               By integrating QR codes, we turned a piece of cardboard into a booking engine. A player draws the 'Bwindi Forest' card, reads about gorilla trekking, scans the back, and is immediately connected to a local tour operator offering a discount.
             </p>
-            <ul className="space-y-3 mt-4">
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-accent" />
-                <span className="font-medium">Connecting tourists with local businesses</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-accent" />
-                <span className="font-medium">Promoting domestic and international tourism</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-accent" />
-                <span className="font-medium">Creating interactive educational tools</span>
-              </li>
-            </ul>
+            <div className="grid grid-cols-3 gap-4 text-center mt-8">
+              <div className="bg-card border border-border p-4 rounded-xl">
+                <div className="text-2xl font-bold text-primary mb-1">2,400+</div>
+                <div className="text-xs font-semibold uppercase text-muted-foreground">Decks Sold</div>
+              </div>
+              <div className="bg-card border border-border p-4 rounded-xl">
+                <div className="text-2xl font-bold text-secondary mb-1">48</div>
+                <div className="text-xs font-semibold uppercase text-muted-foreground">Partners</div>
+              </div>
+              <div className="bg-card border border-border p-4 rounded-xl">
+                <div className="text-2xl font-bold text-accent mb-1">12,000+</div>
+                <div className="text-xs font-semibold uppercase text-muted-foreground">QR Scans</div>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div 
@@ -103,29 +104,73 @@ export default function About() {
           </motion.div>
         </div>
 
+        {/* Team Section */}
+        <section className="py-16 text-center max-w-5xl mx-auto">
+           <h2 className="text-3xl font-serif font-bold text-foreground mb-12">The Team Behind the Cards</h2>
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+             <div className="flex flex-col items-center">
+               <Avatar className="h-24 w-24 mb-4 border-4 border-white shadow-lg">
+                 <AvatarFallback className="text-xl font-bold bg-primary text-primary-foreground">JN</AvatarFallback>
+               </Avatar>
+               <h4 className="font-bold text-lg">Jonathan N.</h4>
+               <p className="text-accent text-sm font-semibold uppercase tracking-wider mb-3">Founder & Creative Dir.</p>
+               <p className="text-sm text-muted-foreground">Former tour guide turned game designer. Jonathan spent 5 years traveling every district of Uganda.</p>
+             </div>
+             <div className="flex flex-col items-center">
+               <Avatar className="h-24 w-24 mb-4 border-4 border-white shadow-lg">
+                 <AvatarFallback className="text-xl font-bold bg-secondary text-secondary-foreground">SM</AvatarFallback>
+               </Avatar>
+               <h4 className="font-bold text-lg">Sarah M.</h4>
+               <p className="text-accent text-sm font-semibold uppercase tracking-wider mb-3">Head of Partnerships</p>
+               <p className="text-sm text-muted-foreground">Connecting local lodges and operators to our players. Sarah ensures every QR scan leads to a great experience.</p>
+             </div>
+             <div className="flex flex-col items-center">
+               <Avatar className="h-24 w-24 mb-4 border-4 border-white shadow-lg">
+                 <AvatarFallback className="text-xl font-bold bg-muted text-muted-foreground">DO</AvatarFallback>
+               </Avatar>
+               <h4 className="font-bold text-lg">David O.</h4>
+               <p className="text-accent text-sm font-semibold uppercase tracking-wider mb-3">Tourism Content Lead</p>
+               <p className="text-sm text-muted-foreground">Historian and wildlife expert. David writes the facts, verifies the figures, and keeps the content authentic.</p>
+             </div>
+           </div>
+        </section>
+
+        {/* Designed & Printed in Uganda */}
+        <section className="my-16 bg-secondary text-secondary-foreground py-16 px-8 rounded-3xl flex flex-col items-center text-center">
+           <h2 className="text-3xl font-serif font-bold text-white mb-6">Designed & Printed in Uganda</h2>
+           <p className="text-xl text-white/80 max-w-3xl mb-8">
+             Every card is researched, written, illustrated, and printed in Uganda. We employ local artists, writers, and designers for every edition.
+           </p>
+           <div className="flex gap-4">
+             <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold tracking-widest uppercase border border-white/20">100% Local</span>
+             <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold tracking-widest uppercase border border-white/20">Fair Trade</span>
+           </div>
+        </section>
+
+        {/* The Road Ahead */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-card border border-border rounded-3xl p-12 text-center max-w-4xl mx-auto shadow-sm"
+          className="max-w-3xl mx-auto pt-10"
         >
-          <h2 className="text-3xl font-serif font-bold text-foreground mb-6">What's Next?</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            The card game is just phase one. We are currently developing the Speak Uganda mobile app, which will digitize the deck, introduce a national loyalty points system, and launch 'Speak Kenya' and 'Speak Rwanda' international editions.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center pt-8 border-t border-border">
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">10k+</div>
-              <div className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Decks Sold</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-secondary mb-2">50+</div>
-              <div className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Business Partners</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-accent mb-2">1M+</div>
-              <div className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">QR Scans</div>
-            </div>
+          <h2 className="text-3xl font-serif font-bold text-foreground mb-12 text-center">The Road Ahead</h2>
+          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
+            {[
+              { date: "Q3 2026", title: "Companion Mobile App", desc: "Digitizing the deck and introducing a national loyalty points system for our players." },
+              { date: "Q4 2026", title: "East Africa Expansion", desc: "Launching 'Speak Kenya' and 'Speak Rwanda' international editions." },
+              { date: "2027", title: "Hotel Loyalty Integration", desc: "Seamless booking flows directly from the physical cards into major hotel CRMs." },
+              { date: "2028", title: "Speak Africa Series", desc: "Expanding the vision continent-wide, connecting travelers to local businesses." },
+            ].map((milestone, idx) => (
+              <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                 <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-background bg-accent shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow"></div>
+                 <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-card border border-border p-6 rounded-2xl shadow-sm">
+                   <div className="text-primary font-bold text-sm mb-1">{milestone.date}</div>
+                   <h3 className="font-serif font-bold text-xl mb-2">{milestone.title}</h3>
+                   <p className="text-muted-foreground text-sm">{milestone.desc}</p>
+                 </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 

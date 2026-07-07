@@ -231,13 +231,13 @@ export default function Directory() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             className="inline-block text-accent font-bold uppercase tracking-widest text-sm mb-5"
           >
-            Speak Uganda Partner Directory
+            Official Partner Businesses
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight"
           >
-            Discover Places, Hotels & Experiences
+            Discover Uganda
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
@@ -264,14 +264,14 @@ export default function Directory() {
         <div className="container mx-auto max-w-4xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { value: `${listings.length}+`, label: "Partner Businesses" },
+              { value: "12", label: "Partner Businesses" },
               { value: "4", label: "Categories" },
-              { value: "QR", label: "Instant Booking" },
-              { value: "100%", label: "Verified Partners" },
+              { value: "QR", label: "Booking on every listing" },
+              { value: "100%", label: "Verified by Speak Uganda" },
             ].map((item, idx) => (
               <div key={idx}>
                 <div className="text-3xl font-bold text-primary mb-1">{item.value}</div>
-                <div className="text-sm text-muted-foreground">{item.label}</div>
+                <div className="text-sm text-muted-foreground font-medium">{item.label}</div>
               </div>
             ))}
           </div>
@@ -373,7 +373,7 @@ export default function Directory() {
                       )}
                     </div>
 
-                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
                       {place.description}
                     </p>
 
@@ -432,21 +432,21 @@ export default function Directory() {
       </section>
 
       {/* ── JOIN BANNER ───────────────────────────────────────── */}
-      <section className="py-20 bg-secondary text-secondary-foreground px-4 md:px-6">
+      <section className="py-24 bg-secondary text-secondary-foreground px-4 md:px-6">
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-white mb-6">
-            Is Your Business Missing From This List?
+          <h2 className="font-serif text-4xl md:text-6xl font-bold text-white mb-6">
+            Your Business Belongs Here
           </h2>
-          <p className="text-secondary-foreground/70 text-lg max-w-xl mx-auto mb-10">
-            Partner with Speak Uganda and get your hotel, restaurant, attraction or tour company listed here — with photos, booking links, and exclusive discounts for game card holders.
+          <p className="text-secondary-foreground/80 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+            Join 12 tourism businesses already reaching travelers through Speak Uganda. Partner listings are free for Gold partners.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 h-14 px-8 text-lg" data-testid="banner-cta-partner">
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 h-14 px-10 text-lg" data-testid="banner-cta-partner">
               <Link href="/partners">
                 Apply to Partner <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/30 text-white bg-white/10 hover:bg-white/20 h-14 px-8 text-lg" data-testid="banner-cta-shop">
+            <Button asChild size="lg" variant="outline" className="border-white/30 text-white bg-white/10 hover:bg-white/20 h-14 px-10 text-lg" data-testid="banner-cta-shop">
               <Link href="/shop">Buy the Game</Link>
             </Button>
           </div>

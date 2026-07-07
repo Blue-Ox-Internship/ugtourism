@@ -11,7 +11,7 @@ import Home from "@/pages/home";
 import Explore from "@/pages/explore";
 import Shop from "@/pages/shop";
 import Partners from "@/pages/partners";
-import Directory from "@/pages/directory";
+import DiscoverUganda from "@/pages/discover-uganda";
 import About from "@/pages/about";
 
 const queryClient = new QueryClient();
@@ -36,7 +36,7 @@ function Router() {
         <Route path="/explore" component={Explore} />
         <Route path="/shop" component={Shop} />
         <Route path="/partners" component={Partners} />
-        <Route path="/directory" component={Directory} />
+        <Route path="/discover" component={DiscoverUganda} />
         <Route path="/about" component={About} />
         <Route component={NotFound} />
       </Switch>
