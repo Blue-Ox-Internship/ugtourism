@@ -20,7 +20,7 @@ export default function Home() {
             poster="/images/hero-uganda.jpg"
             className="w-full h-full object-cover"
           >
-            <source src="/images/elephants-walking.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/ghypni82/video/upload/q_auto,f_auto/discover-uganda/mxqzy3ivqtpxr0vtynic.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/50" />
         </div>
