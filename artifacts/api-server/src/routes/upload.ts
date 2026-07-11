@@ -1,4 +1,20 @@
+declare global {
+  namespace Express {
+    interface Request {
+      file?: {
+        fieldname: string;
+        originalname: string;
+        encoding: string;
+        mimetype: string;
+        buffer: Buffer;
+        size: number;
+      };
+    }
+  }
+}
+
 import { Router, Request, Response } from "express";
+// @ts-ignore - multer ships its own types in v2, but not in @types/
 import multer from "multer";
 import cloudinary from "../lib/cloudinary";
 
