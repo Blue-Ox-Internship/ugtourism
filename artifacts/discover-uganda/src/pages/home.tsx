@@ -12,12 +12,16 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/hero-uganda.jpg" 
-            alt="Uganda Landscape" 
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/images/hero-uganda.jpg"
             className="w-full h-full object-cover"
-            loading="lazy"
-          />
+          >
+            <source src="/images/elephants-walking.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-black/50" />
         </div>
         
