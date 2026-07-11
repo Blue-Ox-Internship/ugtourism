@@ -1,5 +1,15 @@
 # Discover Uganda
 
+[![CI](https://img.shields.io/github/actions/workflow/status/Blue-Ox-Internship/discoveruganda/ci.yml?label=CI&logo=github)](https://github.com/Blue-Ox-Internship/discoveruganda/actions)
+[![Vercel](https://img.shields.io/badge/deploy-Vercel-000?logo=vercel)](https://discover-uganda.vercel.app)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)](https://www.typescriptlang.org)
+[![Express](https://img.shields.io/badge/Express-5-000?logo=express)](https://expressjs.com)
+[![Tailwind](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
+[![pnpm](https://img.shields.io/badge/pnpm-10-F69220?logo=pnpm)](https://pnpm.io)
+[![Cloudinary](https://img.shields.io/badge/Cloudinary-CDN-3448C5?logo=cloudinary)](https://cloudinary.com)
+
 An interactive tourism platform that combines a physical card game with digital technology to promote tourism in Uganda. Each game card features a QR code that unlocks exclusive booking discounts, deep-dive historical content, and direct connections to local tour operators.
 
 ## Tech Stack
