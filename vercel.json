@@ -1,0 +1,8 @@
+{
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm --filter @workspace/discover-uganda build",
+  "outputDirectory": "artifacts/discover-uganda/dist/public",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
