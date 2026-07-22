@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Like a Ugandan — Card Back</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2C2C2A;
+    font-family: 'DM Sans', sans-serif;
+    padding: 30px 16px;
+  }
+  .card {
+    width: 252px;
+    height: 352px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.2);
+  }
+  .pattern { position: absolute; inset: 0; }
+  .pattern svg { display: block; }
+
+  /* Center branding */
+  .brand-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+    background: rgba(44, 24, 16, .75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 18px 28px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(232, 184, 77, .35);
+  }
+  .brand-sub {
+    font-size: 7px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #E8B84D;
+    margin-bottom: 4px;
+  }
+  .brand-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #F9F3E8;
+    line-height: 1.1;
+    letter-spacing: .02em;
+  }
+  .brand-accent {
+    width: 40px; height: 2px;
+    background: #E8B84D;
+    margin: 8px auto 6px;
+    border-radius: 1px;
+  }
+  .brand-tagline {
+    font-size: 7px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(232, 184, 77, .7);
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="pattern">
+    <svg width="252" height="352" viewBox="0 0 252 352" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Kitenge base pattern tile -->
+        <pattern id="kitenge" x="0" y="0" width="63" height="63" patternUnits="userSpaceOnUse">
+          <!-- Tile background -->
+          <rect width="63" height="63" fill="#3D2B1F"/>
+
+          <!-- Large center diamond -->
+          <polygon points="31.5,6 57,31.5 31.5,57 6,31.5" fill="none" stroke="#E8B84D" stroke-width="1.8"/>
+          <polygon points="31.5,14 49,31.5 31.5,49 14,31.5" fill="none" stroke="#C8963E" stroke-width="1"/>
+          <polygon points="31.5,21 42,31.5 31.5,42 21,31.5" fill="#5C4030"/>
+
+          <!-- Center circle -->
+          <circle cx="31.5" cy="31.5" r="6" fill="#E8B84D" opacity=".8"/>
+          <circle cx="31.5" cy="31.5" r="3" fill="#3D2B1F"/>
+          <circle cx="31.5" cy="31.5" r="1.5" fill="#C8963E"/>
+
+          <!-- Corner circles (quarter circles visible) -->
+          <circle cx="0" cy="0" r="10" fill="none" stroke="#C8963E" stroke-width="1" opacity=".6"/>
+          <circle cx="63" cy="0" r="10" fill="none" stroke="#C8963E" stroke-width="1" opacity=".6"/>
+          <circle cx="0" cy="63" r="10" fill="none" stroke="#C8963E" stroke-width="1" opacity=".6"/>
+          <circle cx="63" cy="63" r="10" fill="none" stroke="#C8963E" stroke-width="1" opacity=".6"/>
+
+          <!-- Corner dots -->
+          <circle cx="0" cy="0" r="3.5" fill="#5C4030"/>
+          <circle cx="63" cy="0" r="3.5" fill="#5C4030"/>
+          <circle cx="0" cy="63" r="3.5" fill="#5C4030"/>
+          <circle cx="63" cy="63" r="3.5" fill="#5C4030"/>
+          <circle cx="0" cy="0" r="1.5" fill="#E8B84D" opacity=".5"/>
+          <circle cx="63" cy="0" r="1.5" fill="#E8B84D" opacity=".5"/>
+          <circle cx="0" cy="63" r="1.5" fill="#E8B84D" opacity=".5"/>
+          <circle cx="63" cy="63" r="1.5" fill="#E8B84D" opacity=".5"/>
+
+          <!-- Petal/leaf shapes on axes -->
+          <!-- Top -->
+          <ellipse cx="31.5" cy="3" rx="4" ry="2.5" fill="#6B4E3A" opacity=".7"/>
+          <!-- Bottom -->
+          <ellipse cx="31.5" cy="60" rx="4" ry="2.5" fill="#6B4E3A" opacity=".7"/>
+          <!-- Left -->
+          <ellipse cx="3" cy="31.5" rx="2.5" ry="4" fill="#6B4E3A" opacity=".7"/>
+          <!-- Right -->
+          <ellipse cx="60" cy="31.5" rx="2.5" ry="4" fill="#6B4E3A" opacity=".7"/>
+
+          <!-- Diagonal accent dots -->
+          <circle cx="14" cy="14" r="2" fill="#C8963E" opacity=".35"/>
+          <circle cx="49" cy="14" r="2" fill="#C8963E" opacity=".35"/>
+          <circle cx="14" cy="49" r="2" fill="#C8963E" opacity=".35"/>
+          <circle cx="49" cy="49" r="2" fill="#C8963E" opacity=".35"/>
+
+          <!-- Tiny triangle accents between diamonds -->
+          <polygon points="16,8 19,5 19,11" fill="#E8B84D" opacity=".25"/>
+          <polygon points="47,8 44,5 44,11" fill="#E8B84D" opacity=".25"/>
+          <polygon points="16,55 19,52 19,58" fill="#E8B84D" opacity=".25"/>
+          <polygon points="47,55 44,52 44,58" fill="#E8B84D" opacity=".25"/>
+
+          <!-- Fine concentric ring around center -->
+          <circle cx="31.5" cy="31.5" r="9" fill="none" stroke="#E8B84D" stroke-width=".5" opacity=".35"/>
+        </pattern>
+
+        <!-- Secondary overlay pattern for depth -->
+        <pattern id="kitenge-overlay" x="0" y="0" width="126" height="126" patternUnits="userSpaceOnUse">
+          <!-- Large decorative circles -->
+          <circle cx="63" cy="63" r="28" fill="none" stroke="#E8B84D" stroke-width=".6" opacity=".15"/>
+          <circle cx="63" cy="63" r="35" fill="none" stroke="#C8963E" stroke-width=".4" opacity=".1"/>
+          <circle cx="0" cy="0" r="28" fill="none" stroke="#E8B84D" stroke-width=".6" opacity=".15"/>
+          <circle cx="126" cy="0" r="28" fill="none" stroke="#E8B84D" stroke-width=".6" opacity=".15"/>
+          <circle cx="0" cy="126" r="28" fill="none" stroke="#E8B84D" stroke-width=".6" opacity=".15"/>
+          <circle cx="126" cy="126" r="28" fill="none" stroke="#E8B84D" stroke-width=".6" opacity=".15"/>
+        </pattern>
+      </defs>
+
+      <!-- Base dark fill -->
+      <rect width="252" height="352" fill="#2C1810"/>
+
+      <!-- Main kitenge pattern -->
+      <rect width="252" height="352" fill="url(#kitenge)"/>
+
+      <!-- Overlay pattern for depth -->
+      <rect width="252" height="352" fill="url(#kitenge-overlay)"/>
+
+      <!-- Subtle vignette edges -->
+      <rect width="252" height="352" fill="url(#kitenge)" opacity="0"/>
+      <rect x="0" y="0" width="252" height="40" fill="url(#vignette-top)" opacity=".3"/>
+
+      <!-- Border frame -->
+      <rect x="6" y="6" width="240" height="340" rx="6" fill="none" stroke="#E8B84D" stroke-width=".7" opacity=".25"/>
+      <rect x="10" y="10" width="232" height="332" rx="4" fill="none" stroke="#E8B84D" stroke-width=".3" opacity=".15"/>
+    </svg>
+  </div>
+
+  <!-- Center branding -->
+  <div class="brand-center">
+    <div class="brand-sub">Travel Like a Ugandan</div>
+    <div class="brand-title">Discover<br>Uganda</div>
+    <div class="brand-accent"></div>
+    <div class="brand-tagline">The Pearl of Africa</div>
+  </div>
+</div>
+</body>
+</html>

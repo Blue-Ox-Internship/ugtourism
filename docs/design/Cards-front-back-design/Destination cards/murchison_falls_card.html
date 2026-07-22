@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Like a Ugandan — Murchison Falls</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2C2C2A;
+    font-family: 'DM Sans', sans-serif;
+    padding: 30px 16px;
+  }
+  .card {
+    width: 252px;
+    height: 352px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.2);
+  }
+  .scene { position: absolute; inset: 0; }
+  .scene svg { display: block; }
+
+  /* Region badge — top left */
+  .region-badge {
+    position: absolute; top: 10px; left: 10px; z-index: 5;
+  }
+  .region-dot {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: #E8B84D; border: 2px solid rgba(255,255,255,.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; color: #3D2B1F;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+  }
+
+  /* Top overlay — title area */
+  .top-overlay {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 3;
+    padding: 14px 14px 44px;
+    background: linear-gradient(to bottom, rgba(15,8,3,.85) 0%, rgba(15,8,3,.65) 55%, transparent 100%);
+    text-align: center;
+  }
+  .brand-line {
+    font-size: 6px; letter-spacing: .25em; text-transform: uppercase;
+    color: rgba(255,255,255,.4); margin-bottom: 2px;
+  }
+  .dest-label {
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: #E8B84D; font-weight: 600; margin-bottom: 2px;
+  }
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 900; color: #fff;
+    line-height: 1.0;
+    text-shadow: 0 2px 10px rgba(0,0,0,.5);
+  }
+
+  /* Fact — vertically centered */
+  .fact-area {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    z-index: 4; width: 218px; text-align: center;
+    background: rgba(15, 8, 3, .55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(232, 184, 77, .2);
+  }
+  .fact-line {
+    width: 32px; height: 1.5px; background: #E8B84D;
+    margin: 0 auto 8px; border-radius: 1px;
+  }
+  .fact-text {
+    font-size: 12px; line-height: 1.6; color: #fff;
+    text-shadow: 0 1px 6px rgba(0,0,0,.7), 0 0 20px rgba(0,0,0,.5);
+  }
+  .fact-line-bottom {
+    width: 32px; height: 1.5px; background: #E8B84D;
+    margin: 8px auto 0; border-radius: 1px;
+  }
+
+  /* Bottom overlay — QR code */
+  .bottom-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+    padding: 30px 14px 12px;
+    background: linear-gradient(to top, rgba(15,8,3,.8) 0%, rgba(15,8,3,.5) 50%, transparent 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .qr-wrap {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .qr-box {
+    width: 38px; height: 38px;
+    border: 1.5px solid rgba(232,184,77,.6); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,.9);
+  }
+  .qr-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px; width: 24px; height: 24px;
+  }
+  .qr-grid span { border-radius: 1px; }
+  .qr-grid span.d { background: #3D2B1F; }
+  .qr-grid span.l { background: #3D2B1F; opacity: .15; }
+  .qr-grid span.m { background: #3D2B1F; opacity: .4; }
+  .qr-label {
+    font-size: 5.5px; color: rgba(255,255,255,.5);
+    margin-top: 3px; letter-spacing: .08em; text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <!-- Full bleed illustration -->
+  <div class="scene">
+    <svg width="252" height="352" viewBox="0 0 252 352" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#C47230"/>
+          <stop offset="30%" stop-color="#D4953E"/>
+          <stop offset="55%" stop-color="#E8B84D"/>
+          <stop offset="80%" stop-color="#F5D780"/>
+          <stop offset="100%" stop-color="#EECF6A"/>
+        </linearGradient>
+        <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5A8B5A"/>
+          <stop offset="50%" stop-color="#3D6B4A"/>
+          <stop offset="100%" stop-color="#2A4A32"/>
+        </linearGradient>
+      </defs>
+      <rect width="252" height="352" fill="url(#sky)"/>
+      <circle cx="126" cy="55" r="90" fill="#F5D780" opacity=".3"/>
+      <circle cx="126" cy="55" r="45" fill="#FFE8A0" opacity=".45"/>
+      <circle cx="126" cy="55" r="18" fill="#FFF4CC" opacity=".5"/>
+      <path d="M0 130Q30 105,70 118Q100 98,140 112Q180 92,220 108Q245 98,252 105V180H0Z" fill="#4A7C3F" opacity=".45"/>
+      <path d="M0 148Q50 128,90 140Q130 122,170 136Q210 118,252 138V180H0Z" fill="#3A6830" opacity=".55"/>
+      <path d="M0 115L22 118L38 132Q44 142,58 148L88 162Q98 168,98 182L98 352L0 352Z" fill="#5C4030"/>
+      <path d="M0 115L22 118L38 132Q44 142,58 148L88 162Q98 168,98 182L98 215L82 205Q68 198,55 204L32 218Q16 228,0 222Z" fill="#6B4E3A"/>
+      <line x1="32" y1="158" x2="28" y2="210" stroke="#4A3525" stroke-width=".6" opacity=".35"/>
+      <line x1="52" y1="152" x2="56" y2="220" stroke="#4A3525" stroke-width=".5" opacity=".3"/>
+      <line x1="72" y1="168" x2="78" y2="250" stroke="#4A3525" stroke-width=".5" opacity=".25"/>
+      <path d="M40 180Q45 200,42 225" fill="none" stroke="#3D2510" stroke-width=".8" opacity=".2"/>
+      <path d="M0 95Q12 78,28 90Q38 72,55 84Q68 68,82 82Q72 88,62 100Q48 90,32 104Q16 96,0 108Z" fill="#1E4A1A"/>
+      <path d="M0 105Q18 92,35 104Q48 90,65 100L60 112Q46 102,32 114Q17 105,0 118Z" fill="#2D5A27"/>
+      <path d="M60 96Q72 84,88 94Q98 82,105 90L96 106Q86 96,76 105Z" fill="#1E4A1A" opacity=".85"/>
+      <path d="M90 178Q84 170,78 176Q72 168,66 174L68 182Q74 176,80 183Q85 175,92 182Z" fill="#2D5A27" opacity=".7"/>
+      <path d="M154 182Q154 168,164 162L194 148Q208 142,214 132L230 118L252 115L252 352L154 352Z" fill="#5C4030"/>
+      <path d="M252 115L230 118L214 132Q208 142,194 148L164 162Q154 168,154 182L154 215L170 205Q184 198,197 204L220 218Q236 228,252 222Z" fill="#6B4E3A"/>
+      <line x1="220" y1="158" x2="224" y2="210" stroke="#4A3525" stroke-width=".6" opacity=".35"/>
+      <line x1="200" y1="152" x2="196" y2="220" stroke="#4A3525" stroke-width=".5" opacity=".3"/>
+      <line x1="180" y1="168" x2="176" y2="250" stroke="#4A3525" stroke-width=".5" opacity=".25"/>
+      <path d="M210 180Q206 200,208 225" fill="none" stroke="#3D2510" stroke-width=".8" opacity=".2"/>
+      <path d="M170 95Q185 78,200 90Q210 72,225 84Q238 68,252 82L252 108Q238 96,222 104Q208 90,195 104Q180 96,170 105Z" fill="#1E4A1A"/>
+      <path d="M188 92Q200 80,215 90Q228 76,242 88Q252 80,252 98L250 104Q238 94,222 102Q208 90,192 100Z" fill="#2D5A27"/>
+      <path d="M162 178Q168 170,174 176Q180 168,186 174L184 182Q178 176,172 183Q167 175,160 182Z" fill="#2D5A27" opacity=".7"/>
+      <rect x="98" y="172" width="56" height="180" fill="url(#water)"/>
+      <path d="M98 182Q112 176,126 180Q140 176,154 182L154 196Q140 192,126 195Q112 192,98 196Z" fill="#6B9B5E" opacity=".55"/>
+      <path d="M102 198Q114 192,126 195Q138 192,150 198L148 212Q136 207,126 210Q116 207,104 212Z" fill="#7AAB6E" opacity=".35"/>
+      <path d="M105 215Q118 210,126 213Q134 210,147 215L145 228Q135 224,126 226Q117 224,107 228Z" fill="#6B9B5E" opacity=".25"/>
+      <path d="M108 210L110 250Q112 270,109 290L106 320Q104 340,110 352L102 352L98 340Q96 320,99 290L101 270Q103 250,100 230Z" fill="#8BB87A" opacity=".3"/>
+      <path d="M144 210L142 250Q140 270,143 290L146 320Q148 340,142 352L150 352L154 340Q156 320,153 290L151 270Q149 250,152 230Z" fill="#8BB87A" opacity=".3"/>
+      <path d="M118 210L120 260Q122 280,119 300L116 340L122 352L132 352L135 340Q138 300,134 280L130 260L126 210Z" fill="#9CC88A" opacity=".2"/>
+      <ellipse cx="126" cy="175" rx="50" ry="22" fill="#fff" opacity=".18"/>
+      <ellipse cx="126" cy="178" rx="35" ry="16" fill="#fff" opacity=".3"/>
+      <ellipse cx="126" cy="182" rx="22" ry="10" fill="#fff" opacity=".4"/>
+      <circle cx="108" cy="165" r="2.2" fill="#fff" opacity=".28"/>
+      <circle cx="142" cy="162" r="1.8" fill="#fff" opacity=".22"/>
+      <circle cx="126" cy="155" r="2.8" fill="#fff" opacity=".18"/>
+      <circle cx="114" cy="152" r="1.2" fill="#fff" opacity=".25"/>
+      <circle cx="138" cy="155" r="1.5" fill="#fff" opacity=".2"/>
+      <path d="M0 305Q12 285,28 298Q38 280,52 292Q58 275,68 288Q74 282,84 292L98 308L98 352L0 352Z" fill="#1A4016"/>
+      <path d="M0 322Q18 305,34 316Q44 300,58 312Q68 296,82 310L98 328L98 352L0 352Z" fill="#2D5A27"/>
+      <path d="M154 305Q166 285,182 298Q192 280,206 292Q212 275,222 288Q228 282,238 292L252 308L252 352L154 352Z" fill="#1A4016"/>
+      <path d="M154 322Q172 305,188 316Q198 300,212 312Q222 296,238 310L252 328L252 352L154 352Z" fill="#2D5A27"/>
+      <path d="M126 48L92 178L98 178Z" fill="#F5D780" opacity=".05"/>
+      <path d="M126 48L154 178L160 178Z" fill="#F5D780" opacity=".05"/>
+      <path d="M55 62L60 58L65 62" fill="none" stroke="#3D2B1F" stroke-width=".8" opacity=".35"/>
+      <path d="M170 48L174 45L178 48" fill="none" stroke="#3D2B1F" stroke-width=".7" opacity=".3"/>
+      <path d="M195 70L198 67L201 70" fill="none" stroke="#3D2B1F" stroke-width=".6" opacity=".25"/>
+    </svg>
+  </div>
+
+  <!-- Region badge -->
+  <div class="region-badge"><div class="region-dot">N</div></div>
+
+  <!-- Top: branding + destination + title -->
+  <div class="top-overlay">
+    <div class="brand-line">Travel Like a Ugandan</div>
+    <div class="dest-label">Destination</div>
+    <div class="title">Murchison<br>Falls</div>
+  </div>
+
+  <!-- Center: fact -->
+  <div class="fact-area">
+    <div class="fact-line"></div>
+    <div class="fact-text">The River Nile squeezes through a narrow 7-metre gorge before plunging about 43 metres, creating one of Uganda's most powerful waterfalls.</div>
+    <div class="fact-line-bottom"></div>
+  </div>
+
+  <!-- Bottom: QR code -->
+  <div class="bottom-overlay">
+    <div class="qr-wrap">
+      <div class="qr-box">
+        <div class="qr-grid">
+          <span class="d"></span><span class="d"></span><span class="d"></span><span class="l"></span><span class="d"></span><span class="d"></span><span class="d"></span>
+          <span class="d"></span><span class="l"></span><span class="d"></span><span class="m"></span><span class="d"></span><span class="l"></span><span class="d"></span>
+          <span class="d"></span><span class="d"></span><span class="d"></span><span class="l"></span><span class="d"></span><span class="d"></span><span class="d"></span>
+          <span class="m"></span><span class="l"></span><span class="m"></span><span class="d"></span><span class="m"></span><span class="l"></span><span class="m"></span>
+          <span class="d"></span><span class="d"></span><span class="d"></span><span class="l"></span><span class="d"></span><span class="d"></span><span class="d"></span>
+          <span class="d"></span><span class="l"></span><span class="d"></span><span class="m"></span><span class="d"></span><span class="l"></span><span class="d"></span>
+          <span class="d"></span><span class="d"></span><span class="d"></span><span class="l"></span><span class="d"></span><span class="d"></span><span class="d"></span>
+        </div>
+      </div>
+      <span class="qr-label">Scan to unlock</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

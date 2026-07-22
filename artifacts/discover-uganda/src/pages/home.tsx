@@ -116,7 +116,16 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                <InteractiveCard {...dest} />
+                <InteractiveCard
+                  frontImage={dest.frontImage}
+                  title={dest.title}
+                  region={dest.region}
+                  regionCode={dest.regionCode}
+                  fact={dest.fact}
+                  highlights={dest.highlights}
+                  description={dest.description}
+                  cardType={dest.cardType}
+                />
               </motion.div>
             ))}
           </div>

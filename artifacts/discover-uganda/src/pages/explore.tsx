@@ -19,7 +19,7 @@ export default function Explore() {
         </div>
         <div className="container relative z-10 mx-auto text-center max-w-4xl">
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {["Northern Uganda", "Western Uganda", "Central Uganda", "Eastern Uganda", "South Western Uganda"].map((region) => (
+            {["Northern Uganda", "Western Uganda", "Central Uganda", "Eastern Uganda"].map((region) => (
               <span key={region} className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-sm font-medium tracking-wide">
                 {region}
               </span>
@@ -49,7 +49,7 @@ export default function Explore() {
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <div className="text-muted-foreground font-semibold tracking-widest uppercase text-sm mb-4">
-              8 regions · 100 cards · 1 deck
+              4 regions · 132 cards · 1 deck
             </div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">Every card is a real place. Every scan is a real booking.</h2>
           </div>
@@ -63,7 +63,16 @@ export default function Explore() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: (idx % 4) * 0.1 }}
               >
-                <InteractiveCard {...dest} />
+                <InteractiveCard
+                  frontImage={dest.frontImage}
+                  title={dest.title}
+                  region={dest.region}
+                  regionCode={dest.regionCode}
+                  fact={dest.fact}
+                  highlights={dest.highlights}
+                  description={dest.description}
+                  cardType={dest.cardType}
+                />
               </motion.div>
             ))}
           </div>
