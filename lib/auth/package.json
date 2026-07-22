@@ -1,0 +1,17 @@
+{
+  "name": "@workspace/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "bcryptjs": "catalog:",
+    "jose": "catalog:"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "catalog:",
+    "@types/node": "catalog:"
+  }
+}

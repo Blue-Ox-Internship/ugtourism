@@ -26,6 +26,9 @@ export default defineConfig({
     fs: {
       strict: true,
     },
+    proxy: {
+      "/api": "http://localhost:3000",
+    },
   },
   preview: {
     host: "0.0.0.0",

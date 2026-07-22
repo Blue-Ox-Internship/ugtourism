@@ -58,6 +58,9 @@ catalog:
   vite: ^7.3.2
   wouter: ^3.3.5
   zod: ^3.25.76
+  jose: ^5.0.0
+  bcryptjs: ^2.4.3
+  '@types/bcryptjs': ^2.4.6
 
 autoInstallPeers: false
 
