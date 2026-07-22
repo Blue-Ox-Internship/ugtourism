@@ -1,141 +1,228 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Tailwind v4 theme mapping — semantic names → HSL variables
+   shadcn/ui components read these. Do not remove or rename.
+───────────────────────────────────────────────────────────────────────── */
 @theme inline {
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
+  --color-background:             hsl(var(--background));
+  --color-foreground:             hsl(var(--foreground));
+  --color-border:                 hsl(var(--border));
+  --color-input:                  hsl(var(--input));
+  --color-ring:                   hsl(var(--ring));
 
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-card-border: hsl(var(--card-border));
+  --color-card:                   hsl(var(--card));
+  --color-card-foreground:        hsl(var(--card-foreground));
+  --color-card-border:            hsl(var(--card-border));
 
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-  --color-popover-border: hsl(var(--popover-border));
+  --color-popover:                hsl(var(--popover));
+  --color-popover-foreground:     hsl(var(--popover-foreground));
+  --color-popover-border:         hsl(var(--popover-border));
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-primary-border: var(--primary-border);
+  --color-primary:                hsl(var(--primary));
+  --color-primary-foreground:     hsl(var(--primary-foreground));
+  --color-primary-border:         hsl(var(--primary));
 
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-secondary-border: var(--secondary-border);
+  --color-secondary:              hsl(var(--secondary));
+  --color-secondary-foreground:   hsl(var(--secondary-foreground));
+  --color-secondary-border:       hsl(var(--secondary));
 
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-muted-border: var(--muted-border);
+  --color-muted:                  hsl(var(--muted));
+  --color-muted-foreground:       hsl(var(--muted-foreground));
+  --color-muted-border:           hsl(var(--border));
 
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-accent-border: var(--accent-border);
+  --color-accent:                 hsl(var(--accent));
+  --color-accent-foreground:      hsl(var(--accent-foreground));
+  --color-accent-border:          hsl(var(--accent));
 
-  --color-destructive: hsl(var(--destructive));
+  --color-destructive:            hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --color-destructive-border: var(--destructive-border);
+  --color-destructive-border:     hsl(var(--destructive));
 
-  --font-sans: var(--app-font-sans);
-  --font-serif: var(--app-font-serif);
-  --font-mono: var(--app-font-mono);
+  --font-sans:  var(--du-font-body);
+  --font-serif: var(--du-font-heading);
+  --font-mono:  var(--du-font-mono);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  /* Sharp everywhere — all radius variants resolve to 0 */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   :root — all design tokens
+   HSL tuples (no hsl() wrapper) for color tokens used by @theme inline.
+   All other tokens are plain values consumed directly via var().
+───────────────────────────────────────────────────────────────────────── */
 :root {
-  --background: 40 33% 98%;
-  --foreground: 160 20% 15%;
-  --border: 40 20% 85%;
-  --card: 40 40% 100%;
-  --card-foreground: 160 20% 15%;
-  --card-border: 40 20% 90%;
-  
-  --popover: 40 40% 100%;
-  --popover-foreground: 160 20% 15%;
-  --popover-border: 40 20% 90%;
-  
-  /* Volcanic Earth Red */
-  --primary: 15 80% 50%;
-  --primary-foreground: 40 33% 98%;
-  
-  /* Forest Green */
-  --secondary: 140 40% 30%;
-  --secondary-foreground: 40 33% 98%;
-  
-  /* Muted Sand */
-  --muted: 40 20% 90%;
-  --muted-foreground: 160 10% 40%;
-  
-  /* Savanna Gold */
-  --accent: 45 90% 55%;
-  --accent-foreground: 160 20% 15%;
-  
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 40 33% 98%;
-  
-  --input: 40 20% 85%;
-  --ring: 15 80% 50%;
+  /* ── Colour (HSL tuples) ───────────────────────────────────────────── */
+  --background:              38 47% 94%;    /* #F7F2E8  warm parchment        */
+  --foreground:              24 51% 11%;    /* #2C1A0E  deep earthy brown      */
+  --border:                  37 27% 70%;    /* #C9B99A  parchment border       */
+  --input:                   37 27% 70%;
+  --ring:                    36 65% 47%;    /* #C8922A  gold                   */
 
-  --app-font-sans: 'Outfit', sans-serif;
-  --app-font-serif: 'Fraunces', serif;
-  --app-font-mono: Menlo, monospace;
-  --radius: 0.75rem;
+  --card:                    40 35% 89%;    /* #EFE9D8  card surface           */
+  --card-foreground:         24 51% 11%;
+  --card-border:             37 27% 74%;
 
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+  --popover:                 40 35% 89%;
+  --popover-foreground:      24 51% 11%;
+  --popover-border:          37 27% 74%;
+
+  --primary:                 36 65% 47%;    /* #C8922A  warm gold              */
+  --primary-foreground:      38 47% 94%;    /* parchment text on gold          */
+
+  --secondary:               24 34% 32%;    /* #6B4C35  mid brown              */
+  --secondary-foreground:    38 47% 94%;
+
+  --muted:                   40 33% 85%;    /* #E8E0CC  deeper surface         */
+  --muted-foreground:        24 19% 51%;    /* #9A7D68  muted text             */
+
+  --accent:                  36 65% 47%;    /* #C8922A  same as primary        */
+  --accent-foreground:       24 51% 11%;
+
+  --destructive:             0 72% 45%;
+  --destructive-foreground:  38 47% 94%;
+
+  /* ── Typography ───────────────────────────────────────────────────── */
+  --du-font-heading: 'Playfair Display', 'Georgia', serif;
+  --du-font-body:    'Inter', system-ui, sans-serif;
+  --du-font-mono:    'Menlo', 'Consolas', monospace;
+
+  /* Type scale — named by role, never by size */
+  --du-text-display:  clamp(3.5rem, 8vw, 7rem);
+  --du-text-title:    clamp(2rem, 4vw, 3.5rem);
+  --du-text-heading:  clamp(1.375rem, 2.5vw, 2rem);
+  --du-text-body:     1.0625rem;
+  --du-text-small:    0.875rem;
+  --du-text-micro:    0.6875rem;
+
+  --du-leading-display: 1.05;
+  --du-leading-title:   1.15;
+  --du-leading-body:    1.72;
+
+  --du-tracking-tight: -0.02em;
+  --du-tracking-label:  0.12em;
+  --du-tracking-micro:  0.18em;
+
+  /* ── Borders — sharp everywhere ───────────────────────────────────── */
+  --radius:          0;
+  --du-border-thin:  1px;
+  --du-border-mid:   2px;
+  --du-border-thick: 3px;
+
+  /* ── Shadows (warm-toned, not cool grey) ─────────────────────────── */
+  --du-shadow-sm:   0 1px 3px 0 rgb(44 26 14 / 0.08);
+  --du-shadow-md:   0 4px 12px -2px rgb(44 26 14 / 0.10),
+                    0 2px 6px -2px rgb(44 26 14 / 0.06);
+  --du-shadow-lg:   0 12px 28px -4px rgb(44 26 14 / 0.12),
+                    0 6px 12px -4px rgb(44 26 14 / 0.08);
+  --du-shadow-card: 5px 7px 0 0 rgb(44 26 14 / 0.10);
+
+  /* ── Region colours — card and map context ONLY ──────────────────── */
+  --du-region-central:   #2D6A4F;
+  --du-region-western:   #1B4F8A;
+  --du-region-northern:  #E5A020;
+  --du-region-eastern:   #C0392B;
+  --du-region-universal: #8E9BAE;
+
+  /* ── Asymmetry tokens — pull from here, never invent your own ───── */
+  --du-rotate-a:    1.5deg;
+  --du-rotate-b:   -1deg;
+  --du-rotate-c:    2.5deg;
+  --du-rotate-d:   -0.75deg;
+  --du-offset-y-a: -12px;
+  --du-offset-y-b:   8px;
+  --du-offset-y-c: -20px;
+  --du-skew-section: -1.5deg;
+
+  /* ── Animation tokens ─────────────────────────────────────────────── */
+  --du-ease-deal:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --du-ease-ink:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --du-ease-stamp:  cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  --du-ease-page:   cubic-bezier(0.4, 0, 0.2, 1);
+
+  --du-duration-fast:   150ms;
+  --du-duration-mid:    350ms;
+  --du-duration-slow:   700ms;
+  --du-duration-reveal: 1200ms;
+
+  /* ── Spacing scale ────────────────────────────────────────────────── */
+  --du-space-xs:  0.5rem;
+  --du-space-sm:  1rem;
+  --du-space-md:  2rem;
+  --du-space-lg:  4rem;
+  --du-space-xl:  8rem;
+  --du-space-2xl: 14rem;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Dark mode — warm bark cloth palette (future use)
+───────────────────────────────────────────────────────────────────────── */
 .dark {
-  --background: 160 20% 10%;
-  --foreground: 40 33% 96%;
-  --border: 160 20% 20%;
-  --card: 160 20% 13%;
-  --card-foreground: 40 33% 96%;
-  --card-border: 160 20% 20%;
-  
-  --popover: 160 20% 13%;
-  --popover-foreground: 40 33% 96%;
-  --popover-border: 160 20% 20%;
-  
-  --primary: 15 80% 55%;
-  --primary-foreground: 40 33% 98%;
-  
-  --secondary: 140 40% 40%;
-  --secondary-foreground: 40 33% 98%;
-  
-  --muted: 160 20% 20%;
-  --muted-foreground: 40 10% 70%;
-  
-  --accent: 45 90% 55%;
-  --accent-foreground: 160 20% 15%;
-  
-  --destructive: 0 70% 50%;
-  --destructive-foreground: 40 33% 98%;
-  
-  --input: 160 20% 20%;
-  --ring: 15 80% 55%;
+  --background:              24 30% 10%;
+  --foreground:              38 30% 88%;
+  --border:                  24 20% 22%;
+  --input:                   24 20% 22%;
+  --ring:                    36 65% 52%;
+
+  --card:                    24 25% 14%;
+  --card-foreground:         38 30% 88%;
+  --card-border:             24 20% 22%;
+
+  --popover:                 24 25% 14%;
+  --popover-foreground:      38 30% 88%;
+  --popover-border:          24 20% 22%;
+
+  --primary:                 36 65% 52%;
+  --primary-foreground:      24 30% 10%;
+
+  --secondary:               30 28% 40%;
+  --secondary-foreground:    38 30% 88%;
+
+  --muted:                   24 20% 18%;
+  --muted-foreground:        37 20% 58%;
+
+  --accent:                  36 65% 52%;
+  --accent-foreground:       24 30% 10%;
+
+  --destructive:             0 65% 48%;
+  --destructive-foreground:  38 30% 88%;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Base styles
+───────────────────────────────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--du-font-body);
+    font-size: var(--du-text-body);
+    line-height: var(--du-leading-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    font-family: var(--du-font-heading);
+    line-height: var(--du-leading-title);
+    letter-spacing: var(--du-tracking-tight);
   }
+
+  h1 { font-size: var(--du-text-display); font-weight: 900; }
+  h2 { font-size: var(--du-text-title);   font-weight: 700; }
+  h3 { font-size: var(--du-text-heading); font-weight: 700; }
 }
