@@ -1121,6 +1121,501 @@ function CraterLakes({ uid, cfg }: SceneProps) {
   );
 }
 
+// ── Scene 17 — Murchison Falls ────────────────────────────────────────────────
+// The Nile forced through a 7m gap before plunging 43m — the world's most powerful
+// waterfall per unit width. Narrow gorge walls, white cascade, hippo in the plunge pool.
+
+function MurchisonFalls({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="242" cy="70" r="58" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="242" cy="70" r="28" fill={cfg.sun} opacity="0.88" />
+        </>
+      )}
+      {/* Distant green plateau */}
+      <path d="M0,160 C55,142 115,156 165,140 C215,124 268,148 300,134 L300,220 L0,220 Z" fill={cfg.hillsFar} />
+      {/* Left cliff wall */}
+      <path d="M0,132 C22,124 44,118 56,126 L60,400 L0,400 Z" fill={cfg.groundDark} />
+      <path d="M0,134 C22,126 44,120 52,128 L46,400 L0,400 Z" fill={cfg.groundMid} opacity="0.45" />
+      {/* Right cliff wall */}
+      <path d="M300,120 C278,112 248,106 240,116 L244,400 L300,400 Z" fill={cfg.groundDark} />
+      <path d="M300,122 C278,114 248,108 244,118 L250,400 L300,400 Z" fill={cfg.groundMid} opacity="0.38" />
+      {/* Nile above the gorge — approaching water */}
+      <path d="M60,124 Q100,114 148,118 Q192,122 240,118 L240,162 Q194,158 150,156 Q102,156 60,162 Z"
+        fill={cfg.water ?? "#3A78B0"} />
+      {/* Shimmer on upper Nile */}
+      <path d="M68,136 Q100,130 148,132 Q192,134 232,130"
+        stroke="rgba(255,255,255,0.22)" strokeWidth="2" fill="none" />
+      {/* The narrow 7m gap */}
+      <path d="M116,158 Q135,150 152,150 Q169,150 184,158 L184,202 Q167,196 152,196 Q137,196 116,202 Z"
+        fill={cfg.water ?? "#2A68A0"} />
+      {/* Main water column falling */}
+      <path d="M118,200 Q152,212 184,200 L190,308 Q167,318 152,320 Q137,318 110,308 Z"
+        fill={cfg.water ?? "#3A88C0"} opacity="0.88" />
+      {/* White foam overlays on falls */}
+      <path d="M120,200 Q152,208 180,200 L176,254 Q152,262 126,254 Z"
+        fill="rgba(255,255,255,0.62)" />
+      <path d="M126,250 Q152,258 174,250 L172,296 Q152,305 132,296 Z"
+        fill="rgba(255,255,255,0.42)" />
+      {/* Spray against left cliff */}
+      {[178,198,218,240,262,285].map((y,i) => (
+        <path key={i}
+          d={`M60,${y} Q${78+i*3},${y-5} ${96+i*4},${y}`}
+          stroke="rgba(255,255,255,0.18)" strokeWidth="2.5" fill="none" />
+      ))}
+      {/* Spray against right cliff */}
+      {[178,198,218,240,262,285].map((y,i) => (
+        <path key={i}
+          d={`M240,${y} Q${222-i*3},${y-5} ${204-i*4},${y}`}
+          stroke="rgba(255,255,255,0.18)" strokeWidth="2.5" fill="none" />
+      ))}
+      {/* Mist cloud at base */}
+      <ellipse cx="152" cy="314" rx="88" ry="30" fill="rgba(218,228,240,0.58)" />
+      <ellipse cx="152" cy="322" rx="70" ry="22" fill="rgba(228,236,244,0.42)" />
+      {/* Plunge pool */}
+      <ellipse cx="152" cy="336" rx="76" ry="26" fill={cfg.water ?? "#3A78B0"} opacity="0.78" />
+      {/* Hippo — mostly submerged, head barely above */}
+      <ellipse cx="106" cy="336" rx="22" ry="12" fill="#1A1410" />
+      <ellipse cx="88"  cy="331" rx="12" ry="9"  fill="#1A1410" />
+      <circle cx="82" cy="325" r="3" fill="#1A1410" />
+      <circle cx="94" cy="325" r="3" fill="#1A1410" />
+      {/* Rocky foreground banks */}
+      <path d="M0,356 C28,344 64,358 104,348 L104,400 L0,400 Z" fill={cfg.groundMid} />
+      <path d="M300,350 C272,340 236,352 196,344 L196,400 L300,400 Z" fill={cfg.groundMid} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 18 — Kidepo Valley ─────────────────────────────────────────────────
+// Uganda's most remote and dramatic park. Narus Valley ringed by Morungole mountains.
+// Golden dry savannah, sparse acacias, ostrich silhouettes.
+
+function KidepoPark({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="248" cy="72" r="60" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="248" cy="72" r="30" fill={cfg.sun} opacity="0.92" />
+        </>
+      )}
+      {/* Morungole mountain range — layered hazy silhouettes */}
+      <path d="M0,215 C32,165 74,140 114,154 C142,164 158,184 165,215 L0,256 Z" fill={cfg.hillsFar} opacity="0.52" />
+      <path d="M118,215 C152,148 182,128 214,144 C234,156 244,178 248,215 L118,256 Z" fill={cfg.hillsFar} opacity="0.64" />
+      <path d="M202,220 C234,170 262,154 288,164 L300,194 L300,260 L202,260 Z" fill={cfg.hillsFar} opacity="0.56" />
+      {/* Valley floor */}
+      <path d="M0,204 C54,192 116,204 168,194 C220,184 268,200 300,192 L300,298 L0,298 Z" fill={cfg.hillsMid} />
+      {/* Open dry grassland */}
+      <path d="M0,284 C46,270 102,282 155,272 C208,262 260,278 300,268 L300,400 L0,400 Z" fill={cfg.groundMid} />
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      {/* Dry grass tufts */}
+      {[20,60,112,172,224,272].map((x,i) => (
+        <path key={i}
+          d={`M${x},308 Q${x-4},294 ${x-1},285 M${x},308 Q${x+2},292 ${x+5},284 M${x},308 Q${x+8},296 ${x+6},288`}
+          stroke={cfg.accent} strokeWidth="2" fill="none" opacity="0.48" />
+      ))}
+      {/* Left sparse flat-top acacia */}
+      <rect x="48" y="210" width="7" height="100" fill="#5C3A18" />
+      <path d="M51,210 L28,196 M51,210 L74,196" stroke="#5C3A18" strokeWidth="4" />
+      <ellipse cx="51" cy="184" rx="38" ry="12" fill={cfg.hillsMid} opacity="0.82" />
+      {/* Right flat-top acacia */}
+      <rect x="218" y="216" width="6" height="94" fill="#5C3A18" />
+      <path d="M221,216 L198,202 M221,216 L244,202" stroke="#5C3A18" strokeWidth="3.5" />
+      <ellipse cx="221" cy="190" rx="34" ry="11" fill={cfg.hillsMid} opacity="0.76" />
+      {/* Ostrich 1 — full silhouette with long neck */}
+      <g transform="translate(132,270)">
+        <path d="M0,0 Q-5,-30 -3,-56" stroke="#1A1610" strokeWidth="8" fill="none" strokeLinecap="round" />
+        <ellipse cx="-3" cy="-60" rx="8" ry="6" fill="#1A1610" />
+        <ellipse cx="0" cy="0" rx="18" ry="22" fill="#1A1610" />
+        <path d="M16,-8 Q28,2 24,16" stroke="#1A1610" strokeWidth="7" fill="none" strokeLinecap="round" opacity="0.7" />
+        <path d="M16,4 Q30,10 28,20" stroke="#1A1610" strokeWidth="5" fill="none" strokeLinecap="round" opacity="0.5" />
+        <line x1="-6" y1="20" x2="-8" y2="46" stroke="#1A1610" strokeWidth="4" />
+        <line x1="6"  y1="20" x2="8"  y2="46" stroke="#1A1610" strokeWidth="4" />
+        <path d="M-8,46 L-12,50 M8,46 L12,50" stroke="#1A1610" strokeWidth="2.5" />
+      </g>
+      {/* Ostrich 2 — smaller, further right */}
+      <g transform="translate(176,258) scale(0.7)">
+        <path d="M0,0 Q-4,-28 -2,-52" stroke="#1A1610" strokeWidth="8" fill="none" strokeLinecap="round" />
+        <ellipse cx="-2" cy="-56" rx="8" ry="6" fill="#1A1610" />
+        <ellipse cx="0" cy="0" rx="18" ry="22" fill="#1A1610" />
+        <path d="M16,-8 Q28,2 24,16" stroke="#1A1610" strokeWidth="7" fill="none" strokeLinecap="round" opacity="0.7" />
+        <line x1="-6" y1="20" x2="-8" y2="46" stroke="#1A1610" strokeWidth="4" />
+        <line x1="6"  y1="20" x2="8"  y2="46" stroke="#1A1610" strokeWidth="4" />
+      </g>
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 19 — Aruu Falls ────────────────────────────────────────────────────
+// River Aruu tumbling through rocky northern terrain. Lush green trees line
+// both banks against an otherwise dry Pader landscape.
+
+function AruuFalls({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="232" cy="72" r="50" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="232" cy="72" r="25" fill={cfg.sun} opacity="0.88" />
+        </>
+      )}
+      {/* Background plateau */}
+      <path d="M0,148 C44,130 100,144 148,130 C196,116 252,136 300,122 L300,224 L0,224 Z" fill={cfg.hillsFar} />
+      {/* Trees on left bank */}
+      <RoundTree x={26}  y={162} h={102} r={40} dark={cfg.hillsMid} light={cfg.hillsFar} />
+      <RoundTree x={274} y={158} h={98}  r={38} dark={cfg.hillsMid} light={cfg.hillsFar} />
+      <RoundTree x={58}  y={186} h={80}  r={30} dark={cfg.groundMid} light={cfg.hillsMid} />
+      <RoundTree x={242} y={182} h={76}  r={28} dark={cfg.groundMid} light={cfg.hillsMid} />
+      {/* Rocky banks flanking the falls */}
+      <path d="M0,226 C26,216 56,228 80,220 L80,400 L0,400 Z" fill={cfg.groundDark} />
+      <path d="M300,218 C274,210 244,222 220,215 L220,400 L300,400 Z" fill={cfg.groundDark} />
+      {/* Upper river approaching */}
+      <path d="M80,218 Q150,208 220,218 L220,254 Q150,244 80,254 Z" fill={cfg.water ?? "#3A88C0"} />
+      {/* Rocky lip */}
+      {[82,100,118,140,160,182,202,220].map((x,i) => (
+        <ellipse key={i} cx={x} cy={252} rx={i%2===0?9:6} ry={5} fill={cfg.groundMid} opacity="0.72" />
+      ))}
+      {/* Falls cascading */}
+      <path d="M86,250 Q150,262 214,250 L220,344 Q167,360 150,362 Q133,360 80,344 Z"
+        fill={cfg.water ?? "#3A88C0"} opacity="0.86" />
+      {/* White water foam */}
+      <path d="M90,252 Q150,260 210,252 L206,298 Q150,308 94,298 Z"
+        fill="rgba(255,255,255,0.55)" />
+      {/* Spray lines on banks */}
+      {[274,290,308,326,342].map((y,i) => (
+        <path key={i}
+          d={`M86,${y} Q${104+i*3},${y-3} ${122+i*4},${y}`}
+          stroke="rgba(255,255,255,0.2)" strokeWidth="2" fill="none" />
+      ))}
+      {[274,290,308,326,342].map((y,i) => (
+        <path key={i}
+          d={`M214,${y} Q${196-i*3},${y-3} ${178-i*4},${y}`}
+          stroke="rgba(255,255,255,0.2)" strokeWidth="2" fill="none" />
+      ))}
+      {/* Mist at base */}
+      <ellipse cx="150" cy="352" rx="74" ry="24" fill="rgba(212,226,238,0.54)" />
+      {/* Plunge pool */}
+      <ellipse cx="150" cy="366" rx="64" ry="21" fill={cfg.water ?? "#3A88C0"} opacity="0.74" />
+      {/* Foreground rocky banks */}
+      <path d="M0,356 C28,342 68,358 106,348 L106,400 L0,400 Z" fill={cfg.groundMid} />
+      <path d="M300,350 C272,338 232,352 194,344 L194,400 L300,400 Z" fill={cfg.groundMid} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 20 — Ziwa Rhino Sanctuary ──────────────────────────────────────────
+// Uganda's only wild white rhinos. Open savannah — a prehistoric silhouette
+// standing among flat-top acacias and golden grass.
+
+function ZiwaRhino({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="242" cy="70" r="56" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="242" cy="70" r="28" fill={cfg.sun} opacity="0.92" />
+        </>
+      )}
+      <Hills far={cfg.hillsFar} mid={cfg.hillsMid} />
+      {/* Open savannah */}
+      <path d="M0,280 C44,268 100,282 155,270 C210,258 262,276 300,264 L300,400 L0,400 Z" fill={cfg.groundMid} />
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      {/* Grass tufts */}
+      {[22,64,126,192,238,278].map((x,i) => (
+        <path key={i}
+          d={`M${x},298 Q${x-4},284 ${x-1},276 M${x},298 Q${x+2},282 ${x+5},274 M${x},298 Q${x+8},286 ${x+6},278`}
+          stroke={cfg.accent} strokeWidth="2" fill="none" opacity="0.48" />
+      ))}
+      {/* Left acacia */}
+      <rect x="36" y="212" width="8" height="118" fill="#5C3A18" />
+      <path d="M40,212 L14,196 M40,212 L66,196" stroke="#5C3A18" strokeWidth="5" />
+      <ellipse cx="40" cy="182" rx="48" ry="15" fill={cfg.hillsMid} />
+      {/* Right acacia */}
+      <rect x="252" y="208" width="8" height="122" fill="#5C3A18" />
+      <path d="M256,208 L228,192 M256,208 L284,192" stroke="#5C3A18" strokeWidth="5" />
+      <ellipse cx="256" cy="178" rx="48" ry="15" fill={cfg.hillsMid} />
+      {/* Adult white rhino — square lip, two horns, facing left */}
+      <g transform="translate(124,288)">
+        <ellipse cx="0" cy="0" rx="38" ry="24" fill="#1A1610" />
+        {/* Head — wide, square-lipped (white rhino characteristic) */}
+        <path d="M-36,-8 Q-56,-10 -60,2 Q-56,16 -44,16 L-36,10 Z" fill="#1A1610" />
+        {/* Square lips */}
+        <path d="M-60,4 Q-68,8 -66,14 Q-62,16 -58,14" stroke="#252018" strokeWidth="3" fill="none" />
+        {/* Front horn */}
+        <path d="M-60,0 Q-76,-14 -72,-26" stroke="#1A1610" strokeWidth="8" fill="none" strokeLinecap="round" />
+        {/* Rear horn */}
+        <path d="M-48,-4 Q-58,-14 -56,-22" stroke="#1A1610" strokeWidth="5" fill="none" strokeLinecap="round" />
+        {/* Ear */}
+        <path d="M-28,-22 Q-22,-32 -16,-26" stroke="#1A1610" strokeWidth="4" fill="none" />
+        {/* Skin fold */}
+        <path d="M12,-22 Q16,-4 12,16" stroke="#252018" strokeWidth="3" fill="none" opacity="0.5" />
+        {/* Legs */}
+        {[-20,-6,8,22].map((x,i) => (
+          <rect key={i} x={x-5} y="22" width="9" height="26" fill="#1A1610" rx="3" />
+        ))}
+        {/* Tail */}
+        <path d="M36,0 Q46,6 44,18" stroke="#1A1610" strokeWidth="4" fill="none" strokeLinecap="round" />
+      </g>
+      {/* Second rhino — smaller, further right */}
+      <g transform="translate(218,274) scale(0.68)">
+        <ellipse cx="0" cy="0" rx="38" ry="24" fill="#1A1610" />
+        <path d="M36,-8 Q56,-10 60,2 Q56,16 44,16 L36,10 Z" fill="#1A1610" />
+        <path d="M60,0 Q76,-14 72,-26" stroke="#1A1610" strokeWidth="8" fill="none" strokeLinecap="round" />
+        <path d="M48,-4 Q58,-14 56,-22" stroke="#1A1610" strokeWidth="5" fill="none" strokeLinecap="round" />
+        {[-20,-6,8,22].map((x,i) => (
+          <rect key={i} x={x-5} y="22" width="9" height="26" fill="#1A1610" rx="3" />
+        ))}
+      </g>
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 21 — Ajai Wildlife Reserve ─────────────────────────────────────────
+// Albert Nile floodplain in the north. Papyrus fringe, hippos wallowing,
+// open woodland behind. Crocodile snout barely above the water.
+
+function AjaiWildlife({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="232" cy="74" r="54" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="232" cy="74" r="28" fill={cfg.sun} opacity="0.88" />
+        </>
+      )}
+      {/* Open woodland background */}
+      <path d="M0,162 C48,142 98,158 148,142 C198,126 254,148 300,134 L300,240 L0,240 Z" fill={cfg.hillsFar} />
+      <RoundTree x={42}  y={166} h={90} r={34} dark={cfg.hillsMid} light={cfg.hillsFar} />
+      <RoundTree x={264} y={160} h={86} r={32} dark={cfg.hillsMid} light={cfg.hillsFar} />
+      {/* Floodplain grassy bank */}
+      <path d="M0,228 C38,218 80,230 120,222 C160,214 202,228 244,220 L300,230 L300,280 L0,280 Z"
+        fill={cfg.groundMid} />
+      {/* Albert Nile water body */}
+      <path d="M0,268 C50,260 100,270 150,262 C200,254 255,268 300,260 L300,342 L0,342 Z"
+        fill={cfg.water ?? "#4888A8"} />
+      {/* Water ripples */}
+      {[276,290,305,318,332].map((y,i) => (
+        <path key={i} d={`M${22+i*10},${y} Q150,${y-3} ${278-i*10},${y}`}
+          stroke="rgba(255,255,255,0.1)" strokeWidth="1.5" fill="none" />
+      ))}
+      {/* Papyrus stems along bank edge */}
+      {[14,32,52,72,92,112,132,158,178,198,218,238,258,278,296].map((x,i) => (
+        <g key={i}>
+          <line x1={x} y1="280" x2={x+(i%3-1)*3} y2="246" stroke="#3A6020" strokeWidth="2.5" />
+          <ellipse cx={x+(i%3-1)*3} cy="244" rx="6" ry="3" fill="#4A7828" />
+        </g>
+      ))}
+      {/* Hippo 1 — head and back above water */}
+      <ellipse cx="90" cy="298" rx="32" ry="13" fill="#1A1410" />
+      <ellipse cx="70" cy="292" rx="16" ry="11" fill="#1A1410" />
+      <circle cx="63" cy="286" r="3.5" fill="#1A1410" />
+      <circle cx="78" cy="286" r="3.5" fill="#1A1410" />
+      {/* Hippo 2 — further */}
+      <ellipse cx="196" cy="302" rx="26" ry="10" fill="#1A1410" />
+      <ellipse cx="179" cy="296" rx="13" ry="9" fill="#1A1410" />
+      {/* Crocodile — just snout and eyes at water line */}
+      <path d="M238,294 Q258,290 270,294" stroke="#1A1410" strokeWidth="5" fill="none" strokeLinecap="round" />
+      <circle cx="240" cy="292" r="2.5" fill="#1A1410" />
+      <circle cx="254" cy="290" r="2" fill="#1A1410" />
+      {/* Muddy foreground bank */}
+      <path d="M0,334 C36,322 86,336 136,324 C186,312 246,332 300,320 L300,400 L0,400 Z"
+        fill={cfg.groundMid} />
+      <rect x="0" y="376" width={W} height="24" fill={cfg.groundDark} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 22 — Karuma Falls ───────────────────────────────────────────────────
+// The Victoria Nile thundering over massive boulders in a wide rocky channel.
+// Churning white rapids, brown rock outcrops, dry scrubland on both banks.
+
+function KarumaFalls({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="236" cy="74" r="54" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="236" cy="74" r="27" fill={cfg.sun} opacity="0.88" />
+        </>
+      )}
+      {/* Distant flat plateau */}
+      <path d="M0,154 C55,136 115,152 162,136 C209,120 262,144 300,130 L300,214 L0,214 Z" fill={cfg.hillsFar} />
+      {/* Scrub on left bank */}
+      <path d="M0,200 C26,190 52,202 76,194 L76,400 L0,400 Z" fill={cfg.groundDark} />
+      {/* Scrub on right bank */}
+      <path d="M300,192 C274,184 248,196 224,188 L224,400 L300,400 Z" fill={cfg.groundDark} />
+      {/* Upper Nile approach */}
+      <path d="M76,192 Q150,180 224,192 L224,238 Q150,226 76,238 Z" fill={cfg.water ?? "#3A78A8"} />
+      {/* Boulders breaking the water */}
+      {[[88,220,20,11],[116,230,15,10],[142,222,13,9],[164,232,18,11],[188,222,15,10],[212,228,17,11]].map(([x,y,rx,ry],i) => (
+        <ellipse key={i} cx={x} cy={y} rx={rx} ry={ry} fill={cfg.groundMid} />
+      ))}
+      {/* White churning rapids between boulders */}
+      {[[82,232],[98,244],[116,236],[134,246],[152,238],[170,248],[190,240],[208,246],[218,236]].map(([x,y],i) => (
+        <path key={i}
+          d={`M${x},${y} Q${x+9},${y-6} ${x+18},${y}`}
+          stroke="rgba(255,255,255,0.58)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+      ))}
+      {/* Main water body through rapids */}
+      <path d="M76,237 Q150,252 224,237 L224,355 Q150,370 76,355 Z"
+        fill={cfg.water ?? "#3A78A8"} opacity="0.7" />
+      {/* Foam lines across rapids */}
+      {[250,268,286,306,324,344].map((y,i) => (
+        <path key={i}
+          d={`M${80+i*5},${y} Q150,${y-5} ${220-i*5},${y}`}
+          stroke="rgba(255,255,255,0.42)" strokeWidth={3-i*0.3} fill="none" />
+      ))}
+      {/* Additional boulders mid-rapids */}
+      {[[96,284,13,8],[128,292,16,9],[158,286,12,8],[186,294,14,9],[212,282,13,8]].map(([x,y,rx,ry],i) => (
+        <ellipse key={i} cx={x} cy={y} rx={rx} ry={ry} fill={cfg.groundDark} />
+      ))}
+      {/* Scrub vegetation on banks */}
+      <RoundTree x={22} y={230} h={64} r={24} dark={cfg.groundMid} light={cfg.hillsMid} />
+      <RoundTree x={44} y={252} h={56} r={20} dark={cfg.groundMid} light={cfg.hillsMid} />
+      <RoundTree x={278} y={224} h={62} r={22} dark={cfg.groundMid} light={cfg.hillsMid} />
+      <RoundTree x={256} y={248} h={54} r={19} dark={cfg.groundMid} light={cfg.hillsMid} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 23 — Fort Patiko (Baker's Fort) ────────────────────────────────────
+// Historic slave-trade fort on a rocky hill outside Gulu. Stone ramparts,
+// battlements, a flag, and the red soil of northern Uganda. Baobab on the right.
+
+function FortPatiko({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="248" cy="68" r="54" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="248" cy="68" r="27" fill={cfg.sun} opacity="0.88" />
+        </>
+      )}
+      {/* Distant flat plains of northern Uganda */}
+      <path d="M0,186 C55,170 115,182 165,168 C215,154 266,174 300,162 L300,242 L0,242 Z" fill={cfg.hillsFar} />
+      {/* The hill the fort sits on */}
+      <path d="M40,400 C68,282 108,244 150,238 C192,232 228,260 260,304 C282,332 298,368 300,400 Z"
+        fill={cfg.groundMid} />
+      {/* Red soil shadow on hill face */}
+      <path d="M58,380 C82,294 118,256 150,250 C182,244 216,272 244,312"
+        stroke={cfg.accent} strokeWidth="1.5" fill="none" opacity="0.28" />
+      {/* Fort perimeter wall */}
+      <rect x="86"  y="200" width="128" height="48" fill={cfg.groundDark} />
+      <rect x="86"  y="200" width="128" height="9"  fill="#6A5040" opacity="0.55" />
+      {/* Battlements / merlons on top */}
+      {[86,98,110,122,134,146,158,170,182,196].map((x,i) => (
+        <rect key={i} x={x} y="191" width="9" height="11" fill={cfg.groundDark} />
+      ))}
+      {/* Corner towers */}
+      <rect x="78"  y="190" width="22" height="60" fill="#5A4030" />
+      <rect x="200" y="190" width="22" height="60" fill="#5A4030" />
+      {/* Tower battlements */}
+      {[78,87,96].map((x,i) => (
+        <rect key={i} x={x} y="183" width="7" height="9" fill="#5A4030" />
+      ))}
+      {[200,209,218].map((x,i) => (
+        <rect key={i} x={x} y="183" width="7" height="9" fill="#5A4030" />
+      ))}
+      {/* Gateway arch */}
+      <rect x="136" y="220" width="28" height="28" fill="#3A2418" />
+      <path d="M136,220 Q150,208 164,220" fill="#3A2418" />
+      {/* Flag pole and flag */}
+      <line x1="150" y1="148" x2="150" y2="192" stroke={cfg.accent} strokeWidth="2.5" />
+      <path d="M150,148 L176,160 L150,172 Z" fill={cfg.accent} opacity="0.82" />
+      {/* Baobab tree — characteristic of northern Uganda */}
+      <rect x="252" y="224" width="18" height="156" fill="#4A3018" />
+      <ellipse cx="261" cy="302" rx="26" ry="54" fill="#3A2810" />
+      {/* Finger branches at top */}
+      <path d="M261,224 L236,198 M261,224 L250,194 M261,224 L272,192 M261,224 L284,196 M261,224 L296,208"
+        stroke="#4A3018" strokeWidth="7" fill="none" strokeLinecap="round" />
+      {/* Foreground red soil ground */}
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 24 — Pian Upe Wildlife Reserve ─────────────────────────────────────
+// Uganda's largest protected area — semi-arid, remote, dramatic.
+// Kadam mountain, dry acacias, cheetah on open plains.
+
+function PianUpe({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="250" cy="72" r="58" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="250" cy="72" r="30" fill={cfg.sun} opacity="0.92" />
+        </>
+      )}
+      {/* Kadam mountain — solitary peak */}
+      <path d="M178,194 L242,112 L300,194 Z" fill={cfg.hillsFar} opacity="0.72" />
+      <path d="M150,202 L212,128 L276,202 Z" fill={cfg.hillsFar} opacity="0.56" />
+      {/* Distant dry plains */}
+      <path d="M0,196 C55,180 112,194 162,180 C212,166 264,190 300,176 L300,258 L0,258 Z" fill={cfg.hillsMid} />
+      {/* Semi-arid open grassland */}
+      <path d="M0,246 C44,232 98,248 150,234 C202,220 258,242 300,228 L300,400 L0,400 Z" fill={cfg.groundMid} />
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      {/* Sparse dry grass */}
+      {[18,56,106,158,212,260,288].map((x,i) => (
+        <path key={i}
+          d={`M${x},304 Q${x-3},290 ${x},282 M${x},304 Q${x+4},288 ${x+3},280`}
+          stroke={cfg.accent} strokeWidth="1.8" fill="none" opacity="0.44" />
+      ))}
+      {/* Lone dry acacia left — flat top */}
+      <rect x="36" y="198" width="7" height="136" fill="#4A3018" />
+      <path d="M39,198 L14,182 M39,198 L64,182 M39,220 L10,208 M39,220 L68,208"
+        stroke="#4A3018" strokeWidth="4" fill="none" />
+      <ellipse cx="39" cy="170" rx="38" ry="12" fill={cfg.hillsMid} opacity="0.68" />
+      {/* Taller dry acacia right */}
+      <rect x="234" y="188" width="8" height="146" fill="#4A3018" />
+      <path d="M238,188 L210,170 M238,188 L266,170 M238,212 L205,198 M238,212 L272,198"
+        stroke="#4A3018" strokeWidth="4.5" fill="none" />
+      <ellipse cx="238" cy="158" rx="44" ry="14" fill={cfg.hillsMid} opacity="0.62" />
+      {/* Cheetah — slender, long-legged, tear-mark face */}
+      <g transform="translate(142,262)">
+        {/* Slender body */}
+        <ellipse cx="0" cy="0" rx="30" ry="15" fill="#1A1610" />
+        {/* Small head */}
+        <circle cx="-28" cy="-9" r="11" fill="#1A1610" />
+        {/* Ear */}
+        <path d="M-34,-18 Q-28,-24 -22,-18" stroke="#1A1610" strokeWidth="3" fill="none" />
+        {/* Tear mark — cheetah's black face stripe */}
+        <path d="M-34,-5 Q-36,1 -34,6" stroke="#252018" strokeWidth="1.5" fill="none" />
+        {/* Long arching tail */}
+        <path d="M30,-2 Q44,6 48,-10" stroke="#1A1610" strokeWidth="5" fill="none" strokeLinecap="round" />
+        {/* Long slender legs */}
+        {[-14,-4,6,18].map((x,i) => (
+          <line key={i} x1={x} y1="13" x2={x+(i<2?-2:2)} y2="42" stroke="#1A1610" strokeWidth="4" />
+        ))}
+        {/* Paws */}
+        {[-16,-6,8,20].map((x,i) => (
+          <ellipse key={i} cx={x+(i<2?-2:2)} cy="44" rx="4" ry="3" fill="#1A1610" />
+        ))}
+      </g>
+      {/* Heat haze at horizon */}
+      <rect x="0" y="193" width={W} height="10" fill="rgba(208,182,136,0.1)" />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
 // ── Scene dispatcher ──────────────────────────────────────────────────────────
 
 function renderScene(uid: string, cfg: IllustrationConfig): React.ReactNode {
@@ -1142,6 +1637,14 @@ function renderScene(uid: string, cfg: IllustrationConfig): React.ReactNode {
     case "kibale-forest":       return <KibaleForest        {...p} />;
     case "sempaya-hot-springs": return <SempayaHotSprings   {...p} />;
     case "crater-lakes":        return <CraterLakes         {...p} />;
+    case "murchison-falls":     return <MurchisonFalls      {...p} />;
+    case "kidepo-valley":       return <KidepoPark          {...p} />;
+    case "aruu-falls":          return <AruuFalls           {...p} />;
+    case "ziwa-rhino":          return <ZiwaRhino           {...p} />;
+    case "ajai-wildlife":       return <AjaiWildlife        {...p} />;
+    case "karuma-falls":        return <KarumaFalls         {...p} />;
+    case "fort-patiko":         return <FortPatiko          {...p} />;
+    case "pian-upe":            return <PianUpe             {...p} />;
     default: return null;
   }
 }

@@ -19,7 +19,16 @@ export type LandmarkType =
   | "rwenzori-mountains"
   | "kibale-forest"
   | "sempaya-hot-springs"
-  | "crater-lakes";
+  | "crater-lakes"
+  // Batch 3 — Northern Uganda
+  | "murchison-falls"
+  | "kidepo-valley"
+  | "aruu-falls"
+  | "ziwa-rhino"
+  | "ajai-wildlife"
+  | "karuma-falls"
+  | "fort-patiko"
+  | "pian-upe";
 
 export interface IllustrationConfig {
   id: string;
