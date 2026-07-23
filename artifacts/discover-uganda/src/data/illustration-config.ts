@@ -10,7 +10,16 @@ export type LandmarkType =
   | "ndere-centre"
   | "mabira-forest"
   | "ssese-islands"
-  | "namugongo-shrine";
+  | "namugongo-shrine"
+  // Batch 2 — Western Uganda
+  | "bwindi-forest"
+  | "queen-elizabeth-np"
+  | "lake-bunyonyi"
+  | "lake-mburo"
+  | "rwenzori-mountains"
+  | "kibale-forest"
+  | "sempaya-hot-springs"
+  | "crater-lakes";
 
 export interface IllustrationConfig {
   id: string;

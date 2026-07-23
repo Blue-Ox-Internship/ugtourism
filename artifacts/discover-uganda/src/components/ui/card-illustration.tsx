@@ -663,6 +663,464 @@ function NamugongoShrine({ uid, cfg }: SceneProps) {
   );
 }
 
+// ── Scene 9 — Bwindi Impenetrable Forest ─────────────────────────────────────
+// Ancient canopy so dense the sky disappears. Mountain gorilla silhouette.
+// Mist wisps between layered tree columns. Light shafts barely pierce through.
+
+function BwindiForest({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <rect width={W} height={H} fill={cfg.skyTop} />
+      {/* Canopy hole — pale sky glimpse at very top */}
+      <ellipse cx="150" cy="28" rx="90" ry="48" fill={cfg.skyBottom} opacity="0.55" />
+      {/* Far background canopy blobs */}
+      {[[20,58,52,56],[100,32,68,62],[192,28,72,60],[278,42,54,56]].map(([cx,cy,rx,ry],i) => (
+        <ellipse key={i} cx={cx} cy={cy} rx={rx} ry={ry} fill={cfg.hillsFar} opacity={0.72+i*0.04} />
+      ))}
+      {/* Mid canopy layer */}
+      {[[0,72,58,62],[76,56,62,66],[160,50,70,64],[236,62,60,62],[300,66,54,60]].map(([cx,cy,rx,ry],i) => (
+        <ellipse key={i} cx={cx} cy={cy} rx={rx} ry={ry} fill={cfg.hillsMid} />
+      ))}
+      {/* Near canopy — darkest */}
+      {[[18,92,52,58],[104,76,68,62],[196,82,65,60],[284,87,54,57]].map(([cx,cy,rx,ry],i) => (
+        <ellipse key={i} cx={cx} cy={cy} rx={rx} ry={ry} fill={cfg.groundMid} />
+      ))}
+      {/* Light shafts */}
+      {[[68,22,56,70],[142,18,64,78],[218,24,52,66]].map(([x,w,s1,s2],i) => (
+        <path key={i} d={`M${x-w/2},0 L${x+w/2},0 L${x+s2},400 L${x-s1},400 Z`}
+          fill="rgba(200,220,160,0.05)" />
+      ))}
+      {/* Mist band */}
+      <rect x="0" y="190" width={W} height="16" fill="rgba(180,200,160,0.13)" />
+      <rect x="0" y="255" width={W} height="10" fill="rgba(180,200,160,0.09)" />
+      {/* Tree trunks */}
+      {[[12,28],[78,24],[144,28],[210,24],[264,26]].map(([x,w],i) => (
+        <g key={i}>
+          <rect x={x} y="104" width={w} height={H} fill="#0A1C0A" />
+          <rect x={x+4} y="104" width={w*0.35} height={H} fill="#142A14" opacity="0.5" />
+        </g>
+      ))}
+      {/* Root buttresses */}
+      {[[26,-10],[50,10],[158,-10],[186,10]].map(([x,dx],i) => (
+        <path key={i} d={`M${x},330 Q${x+dx},368 ${x+dx*0.6},400 L${x},400 Z`} fill="#0A1C0A" />
+      ))}
+      {/* Fern clusters */}
+      {[38,115,200,262].map((x,i) => (
+        <ellipse key={i} cx={x} cy={328+i*3} rx={30+i*3} ry={11} fill={cfg.accent} opacity="0.32" />
+      ))}
+      {/* Mountain gorilla — seated silverback */}
+      <g transform="translate(148,286)">
+        <ellipse cx="0" cy="28" rx="22" ry="30" fill="#0A0A08" />
+        <circle cx="0" cy="-2" r="17" fill="#0A0A08" />
+        <path d="M-6,-20 Q0,-30 6,-20" fill="#0A0A08" />
+        <ellipse cx="0" cy="20" rx="14" ry="18" fill="#181816" />
+        <path d="M-20,18 Q-36,30 -28,52" stroke="#0A0A08" strokeWidth="12" fill="none" strokeLinecap="round" />
+        <path d="M20,18 Q38,32 30,52" stroke="#0A0A08" strokeWidth="12" fill="none" strokeLinecap="round" />
+      </g>
+      {/* Dark ground */}
+      <path d="M0,318 C50,306 100,318 150,308 C200,298 255,316 300,306 L300,400 L0,400 Z" fill={cfg.groundMid} />
+      <rect x="0" y="372" width={W} height="28" fill={cfg.groundDark} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 10 — Queen Elizabeth NP ────────────────────────────────────────────
+// Wide open savannah. Flat-top acacias. Kazinga Channel as a shining blue band.
+// Tree-climbing lion silhouette on right acacia branch.
+
+function QueenElizabethNP({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="238" cy="76" r="58" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="238" cy="76" r="30" fill={cfg.sun} opacity="0.92" />
+        </>
+      )}
+      {/* Distant savannah horizon */}
+      <path d="M0,198 C60,188 120,196 180,190 C240,184 272,194 300,188 L300,258 L0,258 Z" fill={cfg.hillsFar} />
+      {/* Kazinga Channel */}
+      <path d="M0,246 C55,240 115,248 170,242 C225,236 268,246 300,240 L300,275 L0,275 Z" fill={cfg.water ?? "#4A88B8"} />
+      <path d="M0,258 C55,252 115,260 170,254 C225,248 268,258 300,252 L300,275 L0,275 Z" fill={cfg.water ?? "#3A78A8"} opacity="0.6" />
+      {/* Water shimmer */}
+      {[252,260,268].map((y,i) => (
+        <path key={i} d={`M${30+i*20},${y} Q150,${y-3} ${270-i*20},${y}`}
+          stroke="rgba(255,255,255,0.13)" strokeWidth="1.5" fill="none" />
+      ))}
+      {/* Mid grassland */}
+      <path d="M0,268 C45,260 105,270 155,262 C205,254 258,268 300,260 L300,380 L0,380 Z" fill={cfg.groundMid} />
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      {/* Grass tufts */}
+      {[28,68,118,198,238,278].map((x,i) => (
+        <path key={i}
+          d={`M${x},330 Q${x-5},316 ${x-2},308 M${x},330 Q${x+1},314 ${x+4},306 M${x},330 Q${x+7},318 ${x+5},310`}
+          stroke={cfg.accent} strokeWidth="2" fill="none" opacity="0.52" />
+      ))}
+      {/* Left flat-top acacia */}
+      <rect x="42" y="210" width="9" height="110" fill="#5C3A18" />
+      <path d="M46,210 L18,196 M46,210 L74,196" stroke="#5C3A18" strokeWidth="5" />
+      <path d="M46,210 L8,204 M46,210 L84,204" stroke="#5C3A18" strokeWidth="3" opacity="0.55" />
+      <ellipse cx="46" cy="184" rx="48" ry="15" fill={cfg.hillsMid} />
+      <ellipse cx="36" cy="190" rx="30" ry="10" fill={cfg.hillsFar} opacity="0.65" />
+      {/* Right flat-top acacia — larger, lion on it */}
+      <rect x="222" y="194" width="12" height="130" fill="#5C3A18" />
+      <path d="M228,194 L194,174 M228,194 L262,174" stroke="#5C3A18" strokeWidth="7" />
+      <path d="M228,194 L178,184 M228,194 L278,184" stroke="#5C3A18" strokeWidth="4" opacity="0.5" />
+      <ellipse cx="228" cy="162" rx="62" ry="18" fill={cfg.hillsMid} />
+      <ellipse cx="216" cy="168" rx="40" ry="12" fill={cfg.hillsFar} opacity="0.6" />
+      {/* Lion silhouette on branch */}
+      <g transform="translate(194,177)">
+        <path d="M-22,2 Q0,-5 22,2" stroke="#2C1A08" strokeWidth="10" fill="none" strokeLinecap="round" />
+        <circle cx="-18" cy="-5" r="9" fill="#2C1A08" />
+        <circle cx="-18" cy="-5" r="13" fill="#1A0E04" opacity="0.45" />
+        <path d="M22,4 Q38,0 42,11" stroke="#2C1A08" strokeWidth="4" fill="none" strokeLinecap="round" />
+        <circle cx="42" cy="13" r="5" fill="#1A0E04" />
+      </g>
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 11 — Lake Bunyonyi ──────────────────────────────────────────────────
+// "Switzerland of Africa" — terraced hills cascade into a still blue-green lake.
+// 29 islands dot the water. Dugout canoe on the surface.
+
+function LakeBunyonyi({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="208" cy="80" r="52" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="208" cy="80" r="26" fill={cfg.sun} opacity="0.9" />
+        </>
+      )}
+      {/* Distant terraced hills — four receding layers */}
+      <path d="M0,142 C50,124 108,136 158,122 C208,108 258,128 300,116 L300,198 L0,198 Z" fill={cfg.hillsFar} opacity="0.62" />
+      <path d="M0,166 C58,144 112,160 158,144 C204,128 254,152 300,138 L300,232 L0,232 Z" fill={cfg.hillsFar} />
+      <path d="M0,198 C68,174 120,194 168,176 C216,158 260,184 300,168 L300,262 L0,262 Z" fill={cfg.hillsMid} />
+      {/* Terrace line suggestions */}
+      {[182,196,214,230].map((y,i) => (
+        <path key={i} d={`M${i*18},${y} Q150,${y-3} ${300-i*18},${y}`}
+          stroke={cfg.accent} strokeWidth="1" fill="none" opacity="0.22" />
+      ))}
+      {/* Lake — calm reflective surface */}
+      <path d="M0,245 C55,239 115,247 165,241 C215,235 260,245 300,239 L300,322 L0,322 Z" fill={cfg.water ?? "#3A78A8"} />
+      {/* Reflection shimmer */}
+      {[254,264,276,290,306].map((y,i) => (
+        <path key={i} d={`M${18+i*10},${y} Q150,${y-4} ${282-i*10},${y}`}
+          stroke="rgba(255,255,255,0.11)" strokeWidth="1.5" fill="none" />
+      ))}
+      {/* Two small islands */}
+      <ellipse cx="218" cy="288" rx="28" ry="11" fill={cfg.hillsMid} />
+      <RoundTree x={212} y={267} h={28} r={13} dark={cfg.groundMid} light={cfg.hillsMid} />
+      <RoundTree x={226} y={271} h={24} r={11} dark={cfg.hillsFar} light={cfg.hillsMid} />
+      <ellipse cx="78" cy="298" rx="18" ry="7" fill={cfg.hillsMid} opacity="0.8" />
+      <RoundTree x={78} y={283} h={20} r={10} dark={cfg.groundMid} light={cfg.hillsMid} />
+      {/* Dugout canoe */}
+      <path d="M104,308 Q128,302 154,308 Q128,316 104,308 Z" fill="#3A2010" />
+      <rect x="125" y="300" width="3" height="18" fill="#5C3820" />
+      <path d="M112,300 L126,306 M140,300 L126,306" stroke="#5C3820" strokeWidth="1.5" fill="none" />
+      {/* Foreground bank */}
+      <path d="M0,312 C38,300 88,312 138,302 C188,292 242,310 300,300 L300,400 L0,400 Z" fill={cfg.groundMid} />
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 12 — Lake Mburo ────────────────────────────────────────────────────
+// Compact savannah park. Acacia silhouettes. Lake gleaming in the valley.
+// Two zebra silhouettes in the golden grassland mid-ground.
+
+function LakeMburo({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="246" cy="68" r="56" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="246" cy="68" r="28" fill={cfg.sun} opacity="0.92" />
+        </>
+      )}
+      <path d="M0,188 C54,168 118,184 174,168 C230,152 272,178 300,166 L300,248 L0,248 Z" fill={cfg.hillsFar} />
+      {/* Lake band */}
+      <path d="M0,234 C48,226 108,236 160,228 C212,220 262,234 300,226 L300,266 L0,266 Z" fill={cfg.water ?? "#4A88B8"} />
+      {/* Water shimmer */}
+      {[240,250,260].map((y,i) => (
+        <path key={i} d={`M${24+i*14},${y} Q150,${y-3} ${276-i*14},${y}`}
+          stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" fill="none" />
+      ))}
+      {/* Grassland */}
+      <path d="M0,258 C44,248 98,260 152,250 C206,240 258,258 300,248 L300,390 L0,390 Z" fill={cfg.groundMid} />
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      {/* Grass tufts */}
+      {[22,58,128,178,222,272].map((x,i) => (
+        <path key={i}
+          d={`M${x},326 Q${x-5},312 ${x-2},304 M${x},326 Q${x+1},310 ${x+4},302 M${x},326 Q${x+7},314 ${x+5},306`}
+          stroke={cfg.accent} strokeWidth="2.2" fill="none" opacity="0.54" />
+      ))}
+      {/* Left acacia */}
+      <rect x="32" y="202" width="8" height="126" fill="#5C3A18" />
+      <path d="M36,202 L10,188 M36,202 L62,188" stroke="#5C3A18" strokeWidth="5" />
+      <ellipse cx="36" cy="176" rx="44" ry="14" fill={cfg.hillsMid} />
+      {/* Right acacia */}
+      <rect x="242" y="194" width="10" height="134" fill="#5C3A18" />
+      <path d="M247,194 L216,176 M247,194 L278,176" stroke="#5C3A18" strokeWidth="6" />
+      <ellipse cx="247" cy="162" rx="54" ry="17" fill={cfg.hillsMid} />
+      {/* Zebra 1 */}
+      <g transform="translate(110,290)">
+        <ellipse cx="0" cy="0" rx="22" ry="13" fill="#1A1818" />
+        <circle cx="-16" cy="-10" r="9" fill="#1A1818" />
+        {[-12,-4,4,12].map((x,i) => (
+          <rect key={i} x={x-2} y="10" width="4" height="22" fill="#1A1818" rx="2" />
+        ))}
+        {[-10,-2,6].map((x,i) => (
+          <rect key={i} x={x} y="-12" width="3" height="22" fill="#F0EAE0" opacity="0.55"
+            transform="rotate(-8)" />
+        ))}
+        <rect x="-20" y="-18" width="3" height="14" fill="#F0EAE0" opacity="0.45" />
+      </g>
+      {/* Zebra 2 — further, smaller */}
+      <g transform="translate(170,276) scale(0.74)">
+        <ellipse cx="0" cy="0" rx="22" ry="13" fill="#1A1818" />
+        <circle cx="-16" cy="-10" r="9" fill="#1A1818" />
+        {[-12,-4,4,12].map((x,i) => (
+          <rect key={i} x={x-2} y="10" width="4" height="22" fill="#1A1818" rx="2" />
+        ))}
+        {[-10,-2,6].map((x,i) => (
+          <rect key={i} x={x} y="-12" width="3" height="22" fill="#F0EAE0" opacity="0.55"
+            transform="rotate(-8)" />
+        ))}
+      </g>
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 13 — Rwenzori Mountains ────────────────────────────────────────────
+// "Mountains of the Moon" — permanent glaciers on the equator.
+// Multi-layered peaks, dramatic cloud belt, giant lobelia plants in foreground.
+
+function RwenzoriMountains({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="150" cy="52" r="50" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="150" cy="52" r="22" fill={cfg.sun} opacity="0.82" />
+        </>
+      )}
+      {/* Far shoulder peaks — left and right */}
+      <path d="M0,238 C28,158 78,126 118,146 C140,156 150,182 150,222 L0,282 Z" fill={cfg.hillsFar} opacity="0.58" />
+      <path d="M300,238 C272,156 222,120 182,140 C162,150 150,180 150,222 L300,282 Z" fill={cfg.hillsFar} opacity="0.58" />
+      {/* Secondary peaks */}
+      <path d="M18,292 L106,136 L188,292 Z" fill={cfg.hillsFar} opacity="0.72" />
+      <path d="M112,292 L194,140 L280,292 Z" fill={cfg.hillsFar} opacity="0.62" />
+      {/* Main central peak */}
+      <path d="M58,284 L150,86 L242,284 Z" fill={cfg.hillsMid} />
+      {/* Snow caps */}
+      <path d="M150,86 L124,140 C134,132 150,118 166,132 Z" fill="#F5F5FF" />
+      <path d="M106,136 L90,178 C98,170 108,156 118,166 Z" fill="#EEEEFF" opacity="0.82" />
+      <path d="M194,140 L210,180 C202,172 194,160 186,170 Z" fill="#EEEEFF" opacity="0.76" />
+      {/* Cloud belt */}
+      <path d="M0,220 C40,208 92,222 150,214 C208,206 262,218 300,210 L300,248 L0,248 Z"
+        fill="rgba(218,226,238,0.85)" />
+      <path d="M0,232 C48,220 102,234 158,224 C214,214 268,228 300,220 L300,255 L0,255 Z"
+        fill="rgba(196,210,226,0.52)" />
+      {/* Dense forest below cloud */}
+      <path d="M0,242 C48,228 100,244 150,234 C200,224 256,240 300,230 L300,332 L0,332 Z" fill={cfg.groundMid} />
+      {/* Giant lobelia left — Rwenzori's iconic plant */}
+      <g transform="translate(50,292)">
+        <rect x="-5" y="-82" width="10" height="82" fill="#1A3818" />
+        {[-72,-58,-44,-30,-16,0,14,28,42,56,70].map((dy,i) => (
+          <path key={i}
+            d={`M0,${dy-82} L${i%2===0?-24:24},${dy-70}`}
+            stroke="#2A5828" strokeWidth="3.5" fill="none" strokeLinecap="round" opacity="0.88" />
+        ))}
+        <ellipse cx="0" cy="-84" rx="10" ry="18" fill="#4A8048" />
+      </g>
+      {/* Giant lobelia right */}
+      <g transform="translate(250,298)">
+        <rect x="-5" y="-74" width="10" height="74" fill="#1A3818" />
+        {[-62,-48,-34,-20,-6,8,24,38,54].map((dy,i) => (
+          <path key={i}
+            d={`M0,${dy-74} L${i%2===0?-22:22},${dy-62}`}
+            stroke="#2A5828" strokeWidth="3.5" fill="none" strokeLinecap="round" opacity="0.82" />
+        ))}
+        <ellipse cx="0" cy="-76" rx="9" ry="16" fill="#4A8048" />
+      </g>
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 14 — Kibale Forest ─────────────────────────────────────────────────
+// Primate capital of the world. Chimpanzee silhouette on a diagonal branch.
+// Dense multi-layer canopy, light shafts, massive trunk foreground pillars.
+
+function KibaleForest({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <rect width={W} height={H} fill={cfg.skyTop} />
+      {/* Pale sky glimpse at top-centre */}
+      <ellipse cx="150" cy="22" rx="80" ry="42" fill={cfg.skyBottom} opacity="0.48" />
+      {/* Background canopy layers */}
+      <path d="M0,58 C38,36 90,52 132,38 C174,24 222,46 272,34 L300,46 L300,128 L0,128 Z" fill={cfg.hillsMid} />
+      <path d="M0,92 C48,68 102,88 152,72 C202,56 258,80 300,66 L300,162 L0,162 Z" fill={cfg.hillsFar} />
+      {/* Mid trees */}
+      {[28,88,154,212,268].map((x,i) => (
+        <g key={i}>
+          <rect x={x-5} y={98+i*5} width="10" height={302-i*5} fill="#0A1C0A" />
+          <ellipse cx={x} cy={94+i*5} rx={28+i*3} ry={36+i*2} fill={cfg.groundMid} opacity={0.68+i*0.05} />
+        </g>
+      ))}
+      {/* Mist layers */}
+      <rect x="0" y="190" width={W} height="16" fill="rgba(150,175,130,0.13)" />
+      <rect x="0" y="258" width={W} height="11" fill="rgba(150,175,130,0.09)" />
+      {/* Massive foreground trunks */}
+      <rect x="0"   y="145" width="30" height={H} fill="#0C1E0A" />
+      <ellipse cx="15"  cy="142" rx="52" ry="62" fill={cfg.groundDark} />
+      <rect x="270" y="138" width="30" height={H} fill="#0C1E0A" />
+      <ellipse cx="285" cy="135" rx="52" ry="62" fill={cfg.groundDark} />
+      {/* Diagonal branch */}
+      <path d="M30,212 Q120,196 192,224" stroke="#1C3010" strokeWidth="14" fill="none" strokeLinecap="round" />
+      <path d="M30,212 Q120,196 192,224" stroke="#2A4818" strokeWidth="7" fill="none" strokeLinecap="round" opacity="0.45" />
+      {/* Chimpanzee on branch */}
+      <g transform="translate(108,195)">
+        <ellipse cx="0" cy="10" rx="13" ry="18" fill="#0E0E0A" />
+        <circle cx="0" cy="-9" r="12" fill="#0E0E0A" />
+        <circle cx="-12" cy="-9" r="5" fill="#0E0E0A" />
+        <circle cx="12" cy="-9" r="5" fill="#0E0E0A" />
+        <ellipse cx="0" cy="-7" rx="7" ry="8" fill="#1A1410" />
+        <path d="M-12,4 Q-24,12 -22,24" stroke="#0E0E0A" strokeWidth="8" fill="none" strokeLinecap="round" />
+        <path d="M12,4 Q22,14 20,24" stroke="#0E0E0A" strokeWidth="8" fill="none" strokeLinecap="round" />
+        <path d="M-6,26 Q-10,42 -8,54" stroke="#0E0E0A" strokeWidth="7" fill="none" strokeLinecap="round" />
+        <path d="M6,26 Q10,44 8,56" stroke="#0E0E0A" strokeWidth="7" fill="none" strokeLinecap="round" />
+      </g>
+      {/* Light shafts */}
+      <polygon points="66,0 50,242 82,242" fill="rgba(175,205,135,0.055)" />
+      <polygon points="150,0 130,222 170,222" fill="rgba(175,205,135,0.065)" />
+      <polygon points="234,0 216,232 252,232" fill="rgba(175,205,135,0.05)" />
+      {/* Ground undergrowth */}
+      <path d="M0,322 C48,308 100,322 150,310 C200,298 255,318 300,308 L300,400 L0,400 Z" fill={cfg.groundMid} />
+      <rect x="0" y="374" width={W} height="26" fill={cfg.groundDark} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 15 — Sempaya Hot Springs ───────────────────────────────────────────
+// Semuliki NP: geothermal spring pool rising from the forest floor.
+// Steam wisps curl upward. Mineral crust rim. Forest wall on both sides.
+
+function SempayaHotSprings({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="178" cy="66" r="48" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="178" cy="66" r="24" fill={cfg.sun} opacity="0.88" />
+        </>
+      )}
+      {/* Forest wall background */}
+      <path d="M0,146 C44,122 94,140 140,124 C186,108 242,134 300,118 L300,238 L0,238 Z" fill={cfg.hillsFar} />
+      <path d="M0,178 C48,154 100,172 152,156 C204,140 258,164 300,150 L300,268 L0,268 Z" fill={cfg.hillsMid} />
+      {/* Flanking tall trees */}
+      <rect x="6"   y="158" width="17" height="242" fill="#0E280E" />
+      <ellipse cx="14"  cy="154" rx="38" ry="48" fill={cfg.hillsFar} />
+      <rect x="277" y="150" width="17" height="250" fill="#0E280E" />
+      <ellipse cx="285" cy="146" rx="38" ry="48" fill={cfg.hillsFar} />
+      {/* Ground plane */}
+      <path d="M0,256 C50,244 100,258 150,248 C200,238 255,254 300,244 L300,355 L0,355 Z" fill={cfg.groundMid} />
+      {/* Mineral staining around pool */}
+      <ellipse cx="150" cy="312" rx="82" ry="24" fill={cfg.accent} opacity="0.14" />
+      {/* Hot spring pool */}
+      <ellipse cx="150" cy="304" rx="68" ry="28" fill={cfg.water ?? "#60B0C0"} />
+      {/* Boiling surface */}
+      {[132,148,164,140,156,168,144,160].map((x,i) => (
+        <circle key={i} cx={x} cy={298+i*1.5} r={2+i*0.4}
+          fill="rgba(255,255,255,0.42)" />
+      ))}
+      {/* Mineral crust rim */}
+      <ellipse cx="150" cy="304" rx="68" ry="28" fill="none" stroke="#D4B888" strokeWidth="4" opacity="0.58" />
+      <ellipse cx="150" cy="304" rx="60" ry="23" fill="none" stroke="#E8C898" strokeWidth="2" opacity="0.36" />
+      {/* Steam wisps */}
+      <path d="M126,276 Q118,254 124,232 Q130,210 122,190"
+        stroke="rgba(215,225,230,0.44)" strokeWidth="6" fill="none" strokeLinecap="round" />
+      <path d="M150,269 Q144,246 150,222 Q156,198 148,178"
+        stroke="rgba(215,225,230,0.36)" strokeWidth="5" fill="none" strokeLinecap="round" />
+      <path d="M174,273 Q182,250 176,228 Q170,206 178,186"
+        stroke="rgba(215,225,230,0.40)" strokeWidth="6" fill="none" strokeLinecap="round" />
+      <path d="M138,266 Q130,242 136,218"
+        stroke="rgba(215,225,230,0.26)" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+      <path d="M163,268 Q170,244 164,220"
+        stroke="rgba(215,225,230,0.26)" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
+// ── Scene 16 — Crater Lakes ──────────────────────────────────────────────────
+// Volcanic craters brimming with emerald-green water in rolling savannah hills.
+// Crater rim viewed from a gentle elevation. Acacia sentinels on the rim.
+
+function CraterLakes({ uid, cfg }: SceneProps) {
+  return (
+    <>
+      <Sky uid={uid} />
+      {cfg.sun && (
+        <>
+          <circle cx="218" cy="63" r="54" fill={`url(#${sid(uid,"sun")})`} />
+          <circle cx="218" cy="63" r="27" fill={cfg.sun} opacity="0.9" />
+        </>
+      )}
+      {/* Rolling distant hills */}
+      <path d="M0,180 C44,158 100,172 152,156 C204,140 258,164 300,150 L300,242 L0,242 Z" fill={cfg.hillsFar} />
+      {/* Secondary smaller crater in background */}
+      <ellipse cx="62" cy="210" rx="54" ry="22" fill={cfg.hillsMid} opacity="0.7" />
+      <ellipse cx="62" cy="214" rx="44" ry="16" fill={cfg.groundMid} opacity="0.6" />
+      <ellipse cx="62" cy="218" rx="36" ry="11" fill={cfg.water ?? "#2AAA60"} opacity="0.55" />
+      {/* Main crater rim */}
+      <ellipse cx="168" cy="266" rx="128" ry="54" fill={cfg.hillsMid} />
+      <ellipse cx="168" cy="270" rx="110" ry="44" fill={cfg.groundMid} />
+      {/* Emerald crater lake */}
+      <ellipse cx="168" cy="278" rx="94" ry="36" fill={cfg.water ?? "#2AAA60"} />
+      <ellipse cx="156" cy="273" rx="54" ry="20" fill={cfg.water ?? "#3ABB72"} opacity="0.48" />
+      {/* Lake shimmer */}
+      {[270,278,287].map((y,i) => (
+        <path key={i} d={`M${78+i*8},${y} Q168,${y-3} ${258-i*8},${y}`}
+          stroke="rgba(255,255,255,0.13)" strokeWidth="1.5" fill="none" />
+      ))}
+      {/* Crater rim edge shadow */}
+      <ellipse cx="168" cy="266" rx="128" ry="54" fill="none"
+        stroke={cfg.groundDark} strokeWidth="4" opacity="0.22" />
+      {/* Acacia on left rim */}
+      <rect x="44" y="222" width="7" height="78" fill="#5C3A18" />
+      <path d="M47,222 L24,210 M47,222 L70,210" stroke="#5C3A18" strokeWidth="4" />
+      <ellipse cx="47" cy="198" rx="34" ry="12" fill={cfg.hillsMid} opacity="0.9" />
+      {/* Acacia on right rim */}
+      <rect x="268" y="214" width="7" height="86" fill="#5C3A18" />
+      <path d="M271,214 L248,202 M271,214 L294,202" stroke="#5C3A18" strokeWidth="4" />
+      <ellipse cx="271" cy="190" rx="34" ry="12" fill={cfg.hillsMid} opacity="0.9" />
+      {/* Foreground savannah slope */}
+      <path d="M0,306 C30,292 80,308 130,294 C180,280 242,298 300,286 L300,400 L0,400 Z" fill={cfg.groundMid} />
+      <Ground mid={cfg.groundMid} dark={cfg.groundDark} />
+      {/* Rim shrubs */}
+      {[30,74,204,256].map((x,i) => (
+        <ellipse key={i} cx={x} cy={248+i*3} rx={12} ry={7} fill={cfg.hillsFar} opacity="0.68" />
+      ))}
+      <Vignette uid={uid} />
+    </>
+  );
+}
+
 // ── Scene dispatcher ──────────────────────────────────────────────────────────
 
 function renderScene(uid: string, cfg: IllustrationConfig): React.ReactNode {
@@ -675,7 +1133,15 @@ function renderScene(uid: string, cfg: IllustrationConfig): React.ReactNode {
     case "ndere-centre":       return <NdereCentre   {...p} />;
     case "mabira-forest":      return <MabiraForest  {...p} />;
     case "ssese-islands":      return <SseseIslands  {...p} />;
-    case "namugongo-shrine":   return <NamugongoShrine {...p} />;
+    case "namugongo-shrine":    return <NamugongoShrine    {...p} />;
+    case "bwindi-forest":       return <BwindiForest       {...p} />;
+    case "queen-elizabeth-np":  return <QueenElizabethNP   {...p} />;
+    case "lake-bunyonyi":       return <LakeBunyonyi       {...p} />;
+    case "lake-mburo":          return <LakeMburo          {...p} />;
+    case "rwenzori-mountains":  return <RwenzoriMountains   {...p} />;
+    case "kibale-forest":       return <KibaleForest        {...p} />;
+    case "sempaya-hot-springs": return <SempayaHotSprings   {...p} />;
+    case "crater-lakes":        return <CraterLakes         {...p} />;
     default: return null;
   }
 }
